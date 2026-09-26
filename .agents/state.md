@@ -92,6 +92,10 @@ açık iş kalmadı; sıradaki iş Ezan Vaktim uygulamasında
       MaskeDev, OyunHub turuncu yeniden tasarım (açık kaynak koleksiyonu kaldırıldı), mail giriş paneli, maskepacks oyun galerisi.
       Play: iki uygulamaya Wear OS form faktörü, saat görselleri ve saat paketleri (MehtApp 1009, StudyTrack 1003) dahili test taslağı.
 
+- [x] **Testçi grubu** `akts-studio-test@googlegroups.com` (herkes katılabilir); iki uygulamada kapalı test (Alpha): 177 ülke + grup.
+      MehtApp IARC derecelendirmesi tamam. StudyTrack yükleme anahtarı sıfırlandı → yeni anahtar SHA1 1E:B0:FE,
+      **2026-09-28 19:07 UTC'de geçerli**; paketler hazır (telefon app-release.aab, saat wear-release.aab).
+
 ## Sıradaki adım
 
 Play: MehtApp içerik derecelendirmesi (IARC koşulları, Eymen onayı), 12 test kullanıcısı e-postası, kapalı test; StudyTrack 48 MB AAB (`studytrack/android/app/build/outputs/bundle/release/app-release.aab`) Eymen elle yükleyecek. Landing'de iş yok. Yeni bir "yakında" işi olursa `upcoming` dizisine eklemek
