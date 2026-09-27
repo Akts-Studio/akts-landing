@@ -48,7 +48,7 @@ export const apps: App[] = [
     desc: 'Diyanet takvimiyle aynı vakitler, kilit ekranında ezan uyarısı, seri ve kaza takibi.',
     href: 'https://ezan.akts.tr',
     icon: 'ezan',
-    shot: '/shots/mehtapp.jpg',
+    shot: '/shots/mehtapp.jpg?v=2',
     tint: 'radial-gradient(120% 90% at 50% 0%, #15523f, #0b3b2e 55%, #062419)',
     tags: ['Android', 'Galaxy Watch', 'Widget'],
   },
