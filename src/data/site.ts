@@ -4,7 +4,7 @@
    `icon` değeri src/components/Logos.tsx içindeki tanımın adı.
    ═══════════════════════════════════════════════════════════════ */
 
-export type LogoName = 'mail' | 'oyun' | 'n8n' | 'kod' | 'zarf' | 'github' | 'ezan' | 'study' | 'blankreel' | 'maske'
+export type LogoName = 'mail' | 'oyun' | 'n8n' | 'kod' | 'zarf' | 'github' | 'ezan' | 'study' | 'blankreel'
 
 export type Link = {
   name: string
@@ -86,13 +86,6 @@ export const services: Link[] = [
     href: 'https://blankreel.com',
     icon: 'blankreel',
     accent: 'var(--c-blankreel)',
-  },
-  {
-    name: 'Maske Packs',
-    desc: 'Minecraft CPvP paket kurucusu · 1.20 – 26.3 · test.maskepacks.com',
-    href: 'https://maskepacks.com',
-    icon: 'maske',
-    accent: 'var(--c-maske)',
   },
   {
     name: 'n8n',

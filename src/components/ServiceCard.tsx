@@ -12,7 +12,7 @@ import type { Link } from '@/data/site'
  * Hiyerarşi buradan geliyor — Aktaş Mail alan adının vitrini, öbür
  * ikisi yanında duran servisler.
  */
-const APP_ICONS = new Set(['oyun', 'ezan', 'study', 'blankreel', 'maske'])
+const APP_ICONS = new Set(['oyun', 'ezan', 'study', 'blankreel'])
 
 export function ServiceCard({ item, delay }: { item: Link; delay: number }) {
   const wide = !!item.featured
