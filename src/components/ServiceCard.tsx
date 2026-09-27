@@ -15,7 +15,7 @@ import type { Link } from '@/data/site'
 const APP_ICONS = new Set(['oyun', 'ezan', 'study', 'blankreel'])
 
 export function ServiceCard({ item, delay }: { item: Link; delay: number }) {
-  const wide = !!item.featured
+  const wide = !!item.featured || !!item.span
 
   return (
     <a
@@ -33,7 +33,7 @@ export function ServiceCard({ item, delay }: { item: Link; delay: number }) {
           wide ? 'flex items-center gap-5 sm:gap-6' : 'flex flex-col gap-4',
         )}
       >
-        {wide && <span className="featured-halo" aria-hidden="true" />}
+        {item.featured && <span className="featured-halo" aria-hidden="true" />}
 
         {/* Logo kendi karosunda: markanın renginden çok soluk bir zemin
             alıyor, böylece monokrom kartta renk noktası oluyor. */}
@@ -69,7 +69,7 @@ export function ServiceCard({ item, delay }: { item: Link; delay: number }) {
             <span className={cn('font-semibold tracking-[-0.02em]', wide && 'text-lg')}>
               {item.name}
             </span>
-            {wide && (
+            {item.featured && (
               <span
                 className="rounded-full px-2 py-0.5 text-[10px] font-semibold uppercase tracking-[0.08em]"
                 style={{
@@ -90,6 +90,22 @@ export function ServiceCard({ item, delay }: { item: Link; delay: number }) {
             !wide && 'absolute right-5 top-5 sm:right-6 sm:top-6',
           )}
         />
+        {item.shot && (
+          // Sitenin kendisi, küçük bir tarayıcı penceresinde.
+          <span
+            className={cn(
+              'block overflow-hidden rounded-xl border bg-secondary shadow-sm transition-transform duration-500 [transition-timing-function:cubic-bezier(.22,1,.36,1)] group-hover:-translate-y-1',
+              item.featured ? 'order-first hidden w-2/5 shrink-0 sm:block' : 'order-first -mx-1 -mt-1',
+            )}
+          >
+            <span className="flex gap-1 border-b px-3 py-2">
+              <i className="h-2 w-2 rounded-full bg-foreground/15" />
+              <i className="h-2 w-2 rounded-full bg-foreground/15" />
+              <i className="h-2 w-2 rounded-full bg-foreground/15" />
+            </span>
+            <img src={item.shot} alt="" loading="lazy" className="block aspect-[16/10] w-full object-cover object-top" />
+          </span>
+        )}
       </GlowCard>
     </a>
   )

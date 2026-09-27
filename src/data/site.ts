@@ -15,6 +15,10 @@ export type Link = {
   accent: string
   /** öne çıkan satır: etrafında yumuşak hâle ve nabız atar */
   featured?: boolean
+  /** sitenin görüntüsü (public/shots); kartta tarayıcı çerçevesinde görünür */
+  shot?: string
+  /** önizlemesiz, tam genişlikte ince satır */
+  span?: boolean
 }
 
 export type Person = {
@@ -72,11 +76,13 @@ export const services: Link[] = [
     icon: 'mail',
     accent: 'var(--c-mailapp)',
     featured: true,
+    shot: '/shots/mail.jpg',
   },
   {
     name: 'OyunHub',
-    desc: '40 oyunluk Türkçe oyun portalı',
+    desc: 'Tarayıcıda anında oynanan Türkçe oyun portalı',
     href: 'https://oyun.akts.tr',
+    shot: '/shots/oyunhub.jpg',
     icon: 'oyun',
     accent: 'var(--c-oyun)',
   },
@@ -84,6 +90,7 @@ export const services: Link[] = [
     name: 'BlankReel',
     desc: 'Kodla kısa video üretimi · TikTok, Shorts ve Reels için API',
     href: 'https://blankreel.com',
+    shot: '/shots/blankreel.jpg',
     icon: 'blankreel',
     accent: 'var(--c-blankreel)',
   },
@@ -93,6 +100,7 @@ export const services: Link[] = [
     href: 'https://n8n.akts.tr',
     icon: 'n8n',
     accent: 'var(--c-n8n)',
+    span: true,
   },
 ]
 
