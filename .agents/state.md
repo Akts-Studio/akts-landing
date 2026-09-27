@@ -96,7 +96,7 @@ açık iş kalmadı; sıradaki iş Ezan Vaktim uygulamasında
       MehtApp IARC derecelendirmesi tamam. StudyTrack yükleme anahtarı sıfırlandı → yeni anahtar SHA1 1E:B0:FE,
       **2026-09-28 19:07 UTC'de geçerli**; paketler hazır (telefon app-release.aab, saat wear-release.aab).
 - [x] **Maske Packs ayrıldı** (2026-09-27): landing'den kartı, `i-maske`, `--c-maske`, `maske.png` silindi (75b9944);
-      maskepacks.com footer'ı "© 2026 Maske Packs", Akts Studio bağlantısı yok (maske-pack 04a9465). İkisi de canlıda;
+      maskepacks.com footer'ı "© 2026 Maske Packs", Akts Studio bağlantısı yok (maske-pack 04a9465); portfolyodan da silindi (websitesi 80dbeec). Hepsi canlıda;
       yedek `/root/akts.tr-yedek-2026-09-27.tgz`. Maskepacks'e Akts Studio markası koyma.
 
 ## Sıradaki adım
