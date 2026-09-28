@@ -90,22 +90,6 @@ export function ServiceCard({ item, delay }: { item: Link; delay: number }) {
             !wide && 'absolute right-5 top-5 sm:right-6 sm:top-6',
           )}
         />
-        {item.shot && (
-          // Sitenin kendisi, küçük bir tarayıcı penceresinde.
-          <span
-            className={cn(
-              'block overflow-hidden rounded-xl border bg-secondary shadow-sm transition-transform duration-500 [transition-timing-function:cubic-bezier(.22,1,.36,1)] group-hover:-translate-y-1',
-              item.featured ? 'order-first hidden w-2/5 shrink-0 sm:block' : 'order-first -mx-1 -mt-1',
-            )}
-          >
-            <span className="flex gap-1 border-b px-3 py-2">
-              <i className="h-2 w-2 rounded-full bg-foreground/15" />
-              <i className="h-2 w-2 rounded-full bg-foreground/15" />
-              <i className="h-2 w-2 rounded-full bg-foreground/15" />
-            </span>
-            <img src={item.shot} alt="" loading="lazy" className="block aspect-[16/10] w-full object-cover object-top" />
-          </span>
-        )}
       </GlowCard>
     </a>
   )
