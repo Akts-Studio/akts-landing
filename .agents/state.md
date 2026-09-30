@@ -1,6 +1,6 @@
 # Durum — akts-landing
 
-Güncelleme: 2026-09-27 | Son araç: claude
+Güncelleme: 2026-09-30 | Son araç: claude
 
 ## Hedef
 
@@ -99,9 +99,24 @@ açık iş kalmadı; sıradaki iş Ezan Vaktim uygulamasında
       maskepacks.com footer'ı "© 2026 Maske Packs", Akts Studio bağlantısı yok (maske-pack 04a9465); portfolyodan da silindi (websitesi 80dbeec). Hepsi canlıda;
       yedek `/root/akts.tr-yedek-2026-09-27.tgz`. Maskepacks'e Akts Studio markası koyma.
 
+- [x] **Kimlik "Akts Studio"** (2026-09-30, commit edilmedi): index/404/gizlilik başlık+og, PageShell, hero, Aktaş Mail açıklaması;
+      og.png Akts Studio logosuyla yeniden üretildi (`scripts/og/akts.json`); theme-color ve başlık noktası marka kırmızısı #bb2a2a.
+      `vite build` bu makinede "transforming"de asılıyor (HEAD'de de; ortam sorunu), tsc+sensör+dev sunucusunda visual temiz. Canlıya çıkmadı.
+
 ## Sıradaki adım
 
-Play: MehtApp içerik derecelendirmesi (IARC koşulları, Eymen onayı), 12 test kullanıcısı e-postası, kapalı test; StudyTrack 48 MB AAB (`studytrack/android/app/build/outputs/bundle/release/app-release.aab`) Eymen elle yükleyecek. Landing'de iş yok. Yeni bir "yakında" işi olursa `upcoming` dizisine eklemek
+Play (2026-09-30 kontrolü): testçi grubunda sahip dahil 4 üye (3 testçi, hepsi 26 Eylül), 12 için 9 eksik; grupta "Who can post" üyelere açık.
+Play Console `/u/2/` (Eymen izinli; `/u/0/` nemyontop). MehtApp 0.5.1 kapalı testte YAYINDA (29 Eylül), ama 0 testçi opt-in: gruba katılanlar
+`https://play.google.com/apps/testing/tr.akts.mehtapp` bağlantısından teste de katılmalı. StudyTrack'te hiç sürüm yok (Alpha boş) — AAB yüklenmeli.
+Developer verification iki pakette de "Registered" (25 Eylül), bekleyen yok. Bu işte Claude şef: alt işler Sonnet ajanlarına, Opus yalnız kritik kararlarda.
+StudyTrack 2026-09-30: koyu tema, yeni giriş/kayıt, burger'dan Ayarlar çıktı (76b1202); site cila+hover canlıda (c0de36d, yedek
+`/root/studytrack-landing-yedek-2026-09-30.tgz`; rsync `--delete`'siz: yasal/ hesap-sil/ cof.png yalnız sunucuda). AAB sürüm kodu 4,
+`~/Downloads/StudyTrack-app-release.aab`, `-PplayUpload=true` ile imzalanmalı (yoksa debug anahtarıyla çıkar: SHA1 5E:8F). Eymen Alpha
+"Sürümü düzenle" sayfasında yükleyecek (Brave, `/u/2/…/tracks/4700770244161658404/releases/1/prepare`); sonra sürüm notu, inceleme, testçi bağlantısı.
+StudyTrack Alpha (2026-09-30): sürüm 5 (2.0.1) yüklendi, not+ad girildi, hata yok, KAYDEDİLDİ; "incelemeye gönder" Eymen'de
+(Yayınlama genel bakışı) → Eymen GÖNDERDİ (2026-09-30 akşam); Play kontrolü geçti: 5 (2.0.1) Alpha'da YAYINDA (Sep 30 20:58, "Available to selected testers", 178 ülke). Sıradaki: 12 testçiyi
+`https://play.google.com/apps/testing/tr.akts.studytrack` ve mehtapp bağlantısından teste sokmak; sayaç 12 kişide başlar. Kod 4 hatalıydı (USE_EXACT_ALARM vb.) → izinler app.json blockedPermissions ile kaldırıldı (commit var). Ardından: testçi bağlantısı/sayaç.
+Önceki: MehtApp 0.5.1 incelemede (26 Eylül); StudyTrack 48 MB AAB (`studytrack/android/app/build/outputs/bundle/release/app-release.aab`) Eymen elle yükleyecek. Landing'de iş yok. Yeni bir "yakında" işi olursa `upcoming` dizisine eklemek
 yeter, bölüm kendiliğinden görünür.
 
 ## Bilinen tuzaklar

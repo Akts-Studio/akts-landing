@@ -1,10 +1,11 @@
 {
   "out": "../../public/og.png",
-  "logo": "../../public/favicon.svg",
-  "title": "akts.tr",
-  "subtitle": "Aktaş ailesinin alan adı",
+  "logo": "../../public/brand/akts-studio.svg",
+  "title": "Akts Studio",
+  "subtitle": "Uygulamalar ve servisler",
   "tagline": "Aktaş Mail · OyunHub · StudyTrack · Ezan Vaktim · BlankReel",
-  "accent": "#4da3ff",
-  "accent2": "#8b6cff",
+  "accent": "#bb2a2a",
+  "accent2": "#bb2a2a",
+  "titleSize": 104,
   "logoRadius": 0
 }

@@ -69,7 +69,7 @@ export const apps: App[] = [
 export const services: Link[] = [
   {
     name: 'Aktaş Mail',
-    desc: 'akts.tr posta kutusu · passkey ile giriş',
+    desc: 'Akts Studio posta kutusu · passkey ile giriş',
     href: 'https://mail.akts.tr',
     icon: 'mail',
     accent: 'var(--c-mailapp)',

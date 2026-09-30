@@ -32,10 +32,10 @@ export function PageShell({ children }: { children: ReactNode }) {
           >
             <span
               className="h-1.5 w-1.5 rounded-full motion-safe:animate-breathe"
-              style={{ background: 'var(--c-mailapp)', animationDuration: '7s' }}
+              style={{ background: '#bb2a2a', animationDuration: '7s' }}
               aria-hidden="true"
             />
-            akts.tr
+            Akts Studio
           </a>
           <ThemeToggle />
         </header>

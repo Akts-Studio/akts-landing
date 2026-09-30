@@ -76,7 +76,7 @@ export default function App() {
             style={{ '--d': '.09s' } as CSSProperties}
           >
             Akts Studio'nun Android uygulamaları, web siteleri ve kendi sunucusunda çalışan
-            servisleri. Hepsi akts.tr altında.
+            servisleri. Hepsi tek çatı altında.
           </p>
 
           <section className="mt-14">
