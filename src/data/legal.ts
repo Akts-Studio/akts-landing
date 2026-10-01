@@ -17,7 +17,7 @@
 
 export const legal = {
   /** Metnin son güncellendiği tarih — sayfada görünür. */
-  updated: '2026-08-27',
+  updated: '2026-10-01',
 
   controller: {
     name: 'Eymen Aktaş',
@@ -45,7 +45,8 @@ export const privacySections: LegalSection[] = [
   {
     heading: 'Kısaca',
     callout:
-      'Bu sitelerde analitik yok, reklam yok, izleme çerezi yok, üyelik yok. ' +
+      'Bu sitelerde analitik yok, izleme çerezi yok, üyelik yok. Reklam yalnızca ' +
+        'OyunHub’ın oyun sayfalarında var (aşağıda ayrıca anlatılıyor). ' +
       'Sunucuya gönderilen kişisel veri toplanmıyor. Tarayıcında tutulan ' +
       'birkaç tercih var; onlar da senin cihazından hiç çıkmıyor.',
     body: [
@@ -70,7 +71,7 @@ export const privacySections: LegalSection[] = [
     ],
     bullets: [
       'Google Analytics, Plausible, Matomo, Umami ya da başka bir analitik aracı',
-      'Reklam ağı, piksel, yeniden hedefleme etiketi',
+      'akts.tr ve eymen.akts.tr’de reklam ağı, piksel, yeniden hedefleme etiketi; OyunHub’da ana sayfa ve listeler de reklamsız',
       'İzleme (tracking) çerezi veya üçüncü taraf çerezi',
       'Üyelik, hesap açma, giriş yapma',
       'İletişim formu, bülten kaydı, e-posta toplama',
@@ -106,13 +107,29 @@ export const privacySections: LegalSection[] = [
     ],
   },
   {
-    heading: 'OyunHub oyun sayaçları',
+    heading: 'OyunHub oyun sayaçları ve beğeniler',
     body: [
-      'OyunHub ayrıca oyun başına iki anonim sayı tutar: kaç kez açıldığı ' +
-        've toplam kaç saniye oynandığı. Bunun için sunucuya yalnızca oyunun ' +
-        'adı ve saniye sayısı gider; kim olduğun kaydedilmez. IP adresi, ' +
-        'sayacın yenilemeyle şişirilmesini önlemek için 30 saniye bellekte ' +
-        'tutulur ve diske yazılmaz.',
+      'OyunHub oyun başına anonim sayılar tutar: kaç kez açıldığı, toplam ' +
+        'kaç saniye oynandığı, kaç kişinin beğendiği ve beğenmediği. Bunun ' +
+        'için sunucuya yalnızca oyunun adı, saniye sayısı ve beğen/beğenme ' +
+        'seçimin gider; kim olduğun kaydedilmez, oyun senin adınla ' +
+        'eşleştirilmez. Sayacın yenilemeyle şişirilmesini önlemek için IP ' +
+        'adresin oynama sayacında 30 saniye, beğeni oyunda 10 saniye ' +
+        'bellekte tutulur ve diske yazılmaz. Hangi oyunları beğendiğin ' +
+        'yalnızca kendi tarayıcında saklanır.',
+    ],
+  },
+  {
+    heading: 'OyunHub reklamları',
+    body: [
+      'OyunHub’ın oyun sayfalarında HilltopAds reklamları gösterilir: ' +
+        'sayfa üstünde banner, oyun başında ve oyun aralarında atlanabilir ' +
+        'video. Ana sayfada ve listelerde reklam yoktur. Reklamlar ' +
+        'HilltopAds sunucularından yüklenir; bu sunucular reklamı ' +
+        'göstermek için IP adresini, tarayıcı bilgisini ve kendi ' +
+        'çerezlerini kullanabilir. Bu veriler OyunHub’a gelmez ve ' +
+        'tarafımızdan saklanmaz; ayrıntılar için HilltopAds’in gizlilik ' +
+        'politikası geçerlidir.',
     ],
   },
   {
@@ -124,7 +141,8 @@ export const privacySections: LegalSection[] = [
     ],
     bullets: [
       'Cloudflare — akts.tr ve alt alan adlarının DNS’i ve trafiği Cloudflare üzerinden geçer (proxy açık). Yani siteye gelen her istek önce Cloudflare’ın sunucularına, sonra bize ulaşır. Cloudflare bu sırada IP adresini ve istek bilgisini işler ve bunu yurt dışındaki sunucularında yapabilir. Amaç güvenlik ve hız; Cloudflare’ın kendi gizlilik politikası geçerlidir.',
-      'Google Fonts (fonts.googleapis.com / fonts.gstatic.com) — yazı tipleri için, portfolyo sayfasında',
+      'Google Fonts (fonts.googleapis.com / fonts.gstatic.com) — yazı tipleri için, portfolyo ve OyunHub sayfalarında',
+      'HilltopAds — yalnızca OyunHub oyun sayfalarındaki banner ve video reklamlar için',
       'Bir dış bağlantıya tıkladığında (GitHub, Discord vb.) artık o sitenin politikası geçerlidir',
     ],
   },
@@ -213,6 +231,7 @@ export const siteNotes: SiteNote[] = [
       { key: 'oyunhub:favorites', what: 'Favorilere eklediğin oyunların listesi' },
       { key: 'oyunhub:recents', what: 'Son oynadığın oyunlar' },
       { key: 'oyunhub:stats', what: 'Oyun başına oynama sayısı ve süresi' },
+      { key: 'oyunhub:votes', what: 'Beğendiğin ya da beğenmediğin oyunlar' },
       { key: 'oyunhub:scores', what: 'Oyun başına en iyi skorun' },
       { key: 'oyunhub:sound', what: 'Ses açık/kapalı tercihi' },
       { key: 'oyunhub:reduceMotion', what: 'Animasyonları azalt tercihi' },

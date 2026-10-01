@@ -1,6 +1,6 @@
 # Durum — akts-landing
 
-Güncelleme: 2026-09-30 | Son araç: claude
+Güncelleme: 2026-10-01 | Son araç: claude
 
 ## Hedef
 
@@ -102,6 +102,10 @@ açık iş kalmadı; sıradaki iş Ezan Vaktim uygulamasında
 - [x] **Kimlik "Akts Studio"** (2026-09-30, commit edilmedi): index/404/gizlilik başlık+og, PageShell, hero, Aktaş Mail açıklaması;
       og.png Akts Studio logosuyla yeniden üretildi (`scripts/og/akts.json`); theme-color ve başlık noktası marka kırmızısı #bb2a2a.
       `vite build` bu makinede "transforming"de asılıyor (HEAD'de de; ortam sorunu), tsc+sensör+dev sunucusunda visual temiz. Canlıya çıkmadı.
+
+- [x] **OyunHub önizleme/metin güncellemesi** (2026-10-01): oyun.akts.tr meta + og.png (600+ oyun, turuncu kimlik, `?v=2`),
+      landing OyunHub kartı "600+", gizlilik metnine HilltopAds reklamı + beğeni sayacı. Canlıda; yedek `/root/akts.tr-yedek-2026-10-01-oyunhub.tgz`.
+      `vite build` bu kez `~/dev/akts-landing` klonunda 8 sn'de bitti (asılma yalnız Desktop kopyasında).
 
 ## Sıradaki adım
 
