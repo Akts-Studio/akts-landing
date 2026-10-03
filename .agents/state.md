@@ -107,6 +107,10 @@ açık iş kalmadı; sıradaki iş Ezan Vaktim uygulamasında
       landing OyunHub kartı "600+", gizlilik metnine HilltopAds reklamı + beğeni sayacı. Canlıda; yedek `/root/akts.tr-yedek-2026-10-01-oyunhub.tgz`.
       `vite build` bu kez `~/dev/akts-landing` klonunda 8 sn'de bitti (asılma yalnız Desktop kopyasında).
 
+- [x] **Maske Packs gerçek istatistikler** (2026-10-03, maske-pack): servis `maske-istatistik` (8793),
+      `/etc/maske-istatistik.env` `HARIC_IP` = Eymen'in test IP'si (değişirse ekle), nginx
+      `/istatistik.json` + `/api/say`. İndirme sayacı 2026-10-03'te sıfırdan başladı.
+
 ## Sıradaki adım
 
 Play (2026-09-30 kontrolü): testçi grubunda sahip dahil 4 üye (3 testçi, hepsi 26 Eylül), 12 için 9 eksik; grupta "Who can post" üyelere açık.
