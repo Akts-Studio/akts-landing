@@ -17,7 +17,7 @@
 
 export const legal = {
   /** Metnin son güncellendiği tarih — sayfada görünür. */
-  updated: '2026-10-01',
+  updated: '2026-10-11',
 
   controller: {
     name: 'Eymen Aktaş',
@@ -141,7 +141,6 @@ export const privacySections: LegalSection[] = [
     ],
     bullets: [
       'Cloudflare — akts.tr ve alt alan adlarının DNS’i ve trafiği Cloudflare üzerinden geçer (proxy açık). Yani siteye gelen her istek önce Cloudflare’ın sunucularına, sonra bize ulaşır. Cloudflare bu sırada IP adresini ve istek bilgisini işler ve bunu yurt dışındaki sunucularında yapabilir. Amaç güvenlik ve hız; Cloudflare’ın kendi gizlilik politikası geçerlidir.',
-      'Google Fonts (fonts.googleapis.com / fonts.gstatic.com) — yazı tipleri için, portfolyo ve OyunHub sayfalarında',
       'HilltopAds — yalnızca OyunHub oyun sayfalarındaki banner ve video reklamlar için',
       'Bir dış bağlantıya tıkladığında (GitHub, Discord vb.) artık o sitenin politikası geçerlidir',
     ],
@@ -152,8 +151,8 @@ export const privacySections: LegalSection[] = [
       'Barındırma Türkiye’de. Ancak trafik Cloudflare’ın küresel ağından ' +
         'geçtiği için istekler fiilen yurt dışındaki bir uç sunucuda ' +
         'karşılanır — bu metin yazılırken Türkiye’den gelen istekler ' +
-        'Cloudflare’ın Prag ucuna düşüyordu. Aynı şekilde portfolyo ' +
-        'sayfasındaki Google Fonts istekleri de yurt dışında işlenir.',
+        'Cloudflare’ın Prag ucuna düşüyordu. Yazı tipleri dahil tüm ' +
+        'dosyalar kendi sunucumuzdan gelir; Google Fonts kullanılmaz.',
       'Yani teknik veriler (başta IP adresi) yurt dışında işleniyor. ' +
         'Bu aktarım hizmetin sunulabilmesi için zorunludur, pazarlama ' +
         'amacı taşımaz ve aktarılan veri istek üstverisiyle sınırlıdır.',
