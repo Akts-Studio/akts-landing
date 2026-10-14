@@ -1,6 +1,10 @@
 # Durum — akts-landing
 
-Güncelleme: 2026-10-11 | Son araç: claude
+Güncelleme: 2026-10-14 | Son araç: claude
+
+## 2026-10-14 tema (CANLI)
+
+Vurgu turuncu-kırmızı: `--brand-accent` `#ff5b4a`/`#c8281c`, aurora `--aurora-1..3`. Uygulamalar `md:grid-cols-3`, telefonlar yelpaze (AppShowcase `index` prop). Aktaş Fit vitrini Inter'le HTML'den yeniden çizildi (`shots/aktasfit.jpg?v=2`) — gerçek cihaz görüntüsü gelirse değiştir. Profil `profile.jpg?v=2` (Snoopy). Derleme scratch'te `git archive HEAD` + `npm ci` ile yapıldı, `rsync -a dist/ akts:/var/www/akts.tr/`. `src/data/legal.ts` ve `.claude/launch.json` önceden kalma commit'lenmemiş değişiklik — dokunulmadı.
 
 ## Bilinen tuzak — Aviary (2026-10-14)
 
