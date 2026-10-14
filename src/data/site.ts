@@ -4,7 +4,7 @@
    `icon` değeri src/components/Logos.tsx içindeki tanımın adı.
    ═══════════════════════════════════════════════════════════════ */
 
-export type LogoName = 'mail' | 'oyun' | 'n8n' | 'kod' | 'zarf' | 'github' | 'ezan' | 'study' | 'blankreel'
+export type LogoName = 'mail' | 'oyun' | 'n8n' | 'kod' | 'zarf' | 'github' | 'ezan' | 'study' | 'blankreel' | 'fit'
 
 export type Link = {
   name: string
@@ -63,6 +63,16 @@ export const apps: App[] = [
     shot: '/shots/studytrack.jpg',
     tint: 'radial-gradient(120% 90% at 50% 0%, #e3efe7, #cde0d4 60%, #a9ccb7)',
     tags: ['Android', 'Wear OS', 'Web'],
+  },
+  {
+    name: 'Aktaş Fit',
+    tagline: 'Yağ insin, kas kalsın',
+    desc: 'Fotoğraftan kalori, Samsung Health\'ten ölçülen yakım ve her gün yeniden dengelenen hedef.',
+    href: 'https://fit.akts.tr',
+    icon: 'fit',
+    shot: '/shots/aktasfit.jpg',
+    tint: 'radial-gradient(120% 90% at 50% 0%, #4a1414, #2a0b0b 55%, #120505)',
+    tags: ['Android', 'Yapay zekâ', 'Widget'],
   },
 ]
 

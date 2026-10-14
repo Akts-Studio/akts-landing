@@ -7,7 +7,7 @@ import type { LogoName } from '@/data/site'
  * Aktaş Mail : kendi markamız (degrade karo + iki tonlu A)
  * OyunHub    : sitenin favicon'undaki şimşek (blur filtreleri atıldı)
  * n8n        : n8n'in düğüm-grafik markası, marka rengi #ea4b71
- * MehtApp, StudyTrack: uygulamaların kendi ikonları
+ * MehtApp, StudyTrack, Aktaş Fit: uygulamaların kendi ikonları
  * kod/zarf   : tek renk glif — satırın accent rengini alır
  */
 export function LogoDefs() {
@@ -81,6 +81,20 @@ export function LogoDefs() {
           <rect x="2" y="2" width="44" height="44" rx="12" fill="#0b3b2e" />
           <g transform="translate(2 2) scale(.4074) translate(54 54) scale(1.08) translate(-54 -53)">
             <circle cx="72" cy="36" r="16" fill="#fff" fillOpacity=".08" /><path fill="#ecc862" d="M26,84 V70 A28,28 0 0,1 82,70 V84 Z" /><rect x="22" y="82" width="64" height="6" rx="3" fill="#ecc862" /><path d="M54,42 V30" stroke="#f0ce72" strokeWidth="3" strokeLinecap="round" /><path fill="#f0ce72" d="M60.61,26.30 A7,7 0 1,1 54.42,17.01 A5.60,5.60 0 0,0 60.61,26.30 Z" />
+          </g>
+        </g>
+
+        {/* Aktaş Fit — uygulamanın kendi ikonu: düşen çizgi (yağ) ve sabit
+            taban (kas). Yollar Android ikonundan (108'lik tuval). */}
+        <linearGradient id="g-fit" x1="32" y1="38" x2="76" y2="52" gradientUnits="userSpaceOnUse">
+          <stop offset="0" stopColor="#ff6b6b" />
+          <stop offset="1" stopColor="#bb2a2a" />
+        </linearGradient>
+        <g id="i-fit">
+          <rect x="2" y="2" width="44" height="44" rx="12" fill="#0a0a0a" />
+          <g transform="translate(2 2) scale(.4074)" fill="none" strokeWidth="9" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M32 38 L54 52 L76 44" stroke="url(#g-fit)" />
+            <path d="M32 70 H76" stroke="#f5f5f5" />
           </g>
         </g>
 

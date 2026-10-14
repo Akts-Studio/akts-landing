@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>Aktaş Fit · Yağ insin, kas kalsın</title>
+<meta name="description" content="Fotoğrafını çek, yapay zekâ tabağı tanısın. Samsung Health'ten ölçülen yakımla hedefini her gün yeniden dengeleyen Android uygulaması." />
+<meta name="theme-color" content="#0a0a0a" />
+<link rel="icon" href="/icon.svg" type="image/svg+xml" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://fit.akts.tr/" />
+<meta property="og:title" content="Aktaş Fit · Yağ insin, kas kalsın" />
+<meta property="og:description" content="Fotoğrafla kalori, ölçülen yakım, her gün yeniden dengelenen hedef." />
+<meta property="og:image" content="https://fit.akts.tr/og.png?v=1" />
+<meta name="twitter:card" content="summary_large_image" />
+<style>
+  :root {
+    --bg: #070707; --bg2: #0d0d0d; --card: #111; --border: #1f1f1f; --border2: #2a2a2a;
+    --fg: #f5f5f5; --dim: #9a9a9f; --red: #d83a3a; --red-deep: #bb2a2a;
+    --r: 0.85rem; --ease: cubic-bezier(.22,1,.36,1);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { background: var(--bg); color-scheme: dark; scroll-behavior: smooth; }
+  body {
+    font: 17px/1.6 -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif;
+    letter-spacing: -0.011em; color: var(--fg); background: var(--bg);
+    overflow-x: hidden; -webkit-font-smoothing: antialiased;
+  }
+  a { color: inherit; text-decoration: none; }
+  .wrap { width: min(1120px, 100% - 40px); margin-inline: auto; }
+
+  /* ── üst çubuk ── */
+  nav {
+    position: fixed; inset: 0 0 auto; z-index: 20; padding: 14px 0;
+    background: rgba(7,7,7,.6); backdrop-filter: blur(14px) saturate(1.4);
+    -webkit-backdrop-filter: blur(14px) saturate(1.4); border-bottom: 1px solid transparent;
+    transition: border-color .3s;
+  }
+  nav.scrolled { border-color: var(--border); }
+  nav .wrap { display: flex; align-items: center; justify-content: space-between; }
+  .brand { display: flex; align-items: center; gap: 10px; font-weight: 650; letter-spacing: -0.02em; }
+  .brand svg { width: 30px; height: 30px; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px; border-radius: 999px;
+    font-weight: 600; font-size: 15px; padding: 10px 18px; transition: transform .2s var(--ease), background .2s, box-shadow .3s;
+  }
+  .btn-red { background: var(--red-deep); color: #fff; box-shadow: 0 0 0 1px rgba(255,255,255,.08) inset, 0 10px 40px -10px rgba(216,58,58,.7); }
+  .btn-red:hover { background: var(--red); transform: translateY(-1px); }
+  .btn-ghost { border: 1px solid var(--border2); color: var(--fg); }
+  .btn-ghost:hover { background: #151515; }
+  .btn-lg { padding: 15px 26px; font-size: 17px; }
+
+  /* ── giriş ── */
+  .hero { position: relative; min-height: 100svh; display: grid; align-items: center; padding: 120px 0 80px; overflow: hidden; }
+  .hero::before {
+    content: ""; position: absolute; inset: -20% -10% auto; height: 90%;
+    background: radial-gradient(50% 50% at 70% 40%, rgba(187,42,42,.28), transparent 70%),
+                radial-gradient(40% 40% at 20% 10%, rgba(255,255,255,.05), transparent 70%);
+    pointer-events: none;
+  }
+  .grid-bg {
+    position: absolute; inset: 0; pointer-events: none; opacity: .5;
+    background-image: linear-gradient(var(--border) 1px, transparent 1px), linear-gradient(90deg, var(--border) 1px, transparent 1px);
+    background-size: 64px 64px;
+    mask-image: radial-gradient(70% 60% at 50% 40%, #000 20%, transparent 75%);
+    -webkit-mask-image: radial-gradient(70% 60% at 50% 40%, #000 20%, transparent 75%);
+  }
+  .hero .wrap { position: relative; display: grid; grid-template-columns: 1.1fr .9fr; gap: 48px; align-items: center; }
+  .eyebrow {
+    display: inline-flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 600;
+    letter-spacing: .08em; text-transform: uppercase; color: var(--dim);
+    border: 1px solid var(--border2); border-radius: 999px; padding: 6px 12px; background: rgba(17,17,17,.7);
+  }
+  .eyebrow i { width: 7px; height: 7px; border-radius: 50%; background: var(--red); box-shadow: 0 0 12px var(--red); animation: pulse 2s infinite; }
+  @keyframes pulse { 50% { opacity: .35; } }
+  h1 {
+    font-size: clamp(46px, 8.4vw, 104px); line-height: .95; letter-spacing: -0.055em; font-weight: 800; margin: 22px 0 22px;
+  }
+  h1 .down { color: transparent; background: linear-gradient(180deg, #ff6b6b, var(--red-deep)); -webkit-background-clip: text; background-clip: text; }
+  .lead { font-size: clamp(18px, 2vw, 21px); color: var(--dim); max-width: 34ch; }
+  .lead b { color: var(--fg); font-weight: 600; }
+  .cta { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 34px; }
+  .meta { margin-top: 18px; font-size: 14px; color: var(--dim); }
+
+  /* ── kalori halkası ── */
+  .ring-wrap { position: relative; justify-self: center; width: min(420px, 82vw); aspect-ratio: 1; }
+  .ring-wrap svg { width: 100%; height: 100%; transform: rotate(-90deg); overflow: visible; }
+  .ring-track { stroke: #1a1a1a; }
+  .ring-bar { stroke: url(#rg); stroke-linecap: round; filter: drop-shadow(0 0 18px rgba(216,58,58,.55)); }
+  .ring-center { position: absolute; inset: 0; display: grid; place-content: center; text-align: center; }
+  .ring-center small { font-size: 13px; letter-spacing: .14em; color: var(--dim); font-weight: 600; }
+  .ring-center strong { font-size: clamp(56px, 10vw, 96px); font-weight: 800; letter-spacing: -0.05em; line-height: 1; font-variant-numeric: tabular-nums; }
+  .ring-center span { color: var(--dim); }
+  .chip {
+    position: absolute; padding: 10px 14px; border-radius: 14px; font-size: 14px; white-space: nowrap;
+    background: rgba(17,17,17,.85); border: 1px solid var(--border2); backdrop-filter: blur(10px);
+    box-shadow: 0 20px 40px -20px #000; animation: float 6s ease-in-out infinite;
+  }
+  .chip b { display: block; font-size: 18px; letter-spacing: -0.02em; }
+  .chip.a { top: 6%; left: -6%; } .chip.b { bottom: 10%; right: -8%; animation-delay: -3s; }
+  .chip .r { color: #ff7676; }
+  @keyframes float { 50% { transform: translateY(-10px); } }
+
+  /* ── bölümler ── */
+  section { padding: 110px 0; position: relative; }
+  .kicker { color: var(--red); font-weight: 650; font-size: 14px; letter-spacing: .1em; text-transform: uppercase; }
+  h2 { font-size: clamp(34px, 5.4vw, 64px); line-height: 1.02; letter-spacing: -0.045em; font-weight: 780; margin: 12px 0 18px; max-width: 18ch; }
+  .sub { color: var(--dim); font-size: 19px; max-width: 52ch; }
+
+  /* şerit */
+  .marquee { border-block: 1px solid var(--border); padding: 18px 0; overflow: hidden; background: var(--bg2); }
+  .marquee div { display: flex; gap: 48px; width: max-content; animation: slide 40s linear infinite; }
+  .marquee span { color: var(--dim); font-weight: 600; font-size: 15px; white-space: nowrap; }
+  .marquee span::before { content: "■"; color: var(--red-deep); font-size: 9px; margin-right: 14px; vertical-align: 3px; }
+  @keyframes slide { to { transform: translateX(-50%); } }
+
+  /* telefonlar */
+  .phones { display: flex; justify-content: center; gap: 28px; margin-top: 64px; perspective: 1600px; }
+  .phone {
+    width: min(300px, 70vw); aspect-ratio: 412/892; border-radius: 42px; padding: 10px; flex: none;
+    background: linear-gradient(160deg, #2a2a2a, #0e0e0e 40%, #1c1c1c); border: 1px solid #333;
+    box-shadow: 0 50px 100px -30px rgba(0,0,0,.9), 0 0 80px -30px rgba(187,42,42,.35);
+    transition: transform .8s var(--ease);
+  }
+  .phone img { width: 100%; height: 100%; object-fit: cover; object-position: top; border-radius: 33px; display: block; background: #000; }
+  .phone.l { transform: rotateY(18deg) translateZ(-60px) translateY(40px); }
+  .phone.r { transform: rotateY(-18deg) translateZ(-60px) translateY(40px); }
+  .phones:hover .phone.l { transform: rotateY(8deg) translateY(20px); }
+  .phones:hover .phone.r { transform: rotateY(-8deg) translateY(20px); }
+
+  /* özellik ızgarası */
+  .features { display: grid; grid-template-columns: repeat(6, 1fr); gap: 16px; margin-top: 56px; }
+  .f {
+    grid-column: span 2; position: relative; padding: 28px; border-radius: 22px; overflow: hidden;
+    background: var(--card); border: 1px solid var(--border); transition: border-color .3s, transform .4s var(--ease);
+  }
+  .f:hover { border-color: #3a2222; transform: translateY(-3px); }
+  .f.big { grid-column: span 3; min-height: 280px; }
+  .f .ic { width: 44px; height: 44px; border-radius: 12px; display: grid; place-items: center; background: rgba(187,42,42,.14); color: #ff7b7b; margin-bottom: 18px; }
+  .f .ic svg { width: 22px; height: 22px; }
+  .f h3 { font-size: 21px; letter-spacing: -0.025em; margin-bottom: 8px; }
+  .f p { color: var(--dim); font-size: 16px; }
+  .f .num { position: absolute; right: 22px; bottom: 6px; font-size: 120px; font-weight: 850; letter-spacing: -0.06em; color: #161616; line-height: 1; pointer-events: none; }
+
+  /* akış */
+  .flow { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; margin-top: 56px; counter-reset: s; border: 1px solid var(--border); border-radius: 24px; overflow: hidden; }
+  .step { padding: 34px 30px; position: relative; background: var(--card); }
+  .step + .step { border-left: 1px solid var(--border); }
+  .step::before { counter-increment: s; content: "0" counter(s); font-size: 14px; font-weight: 700; color: var(--red); letter-spacing: .1em; }
+  .step h3 { font-size: 24px; letter-spacing: -0.03em; margin: 10px 0 8px; }
+  .step p { color: var(--dim); font-size: 16px; }
+
+  /* sayılar */
+  .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 56px; }
+  .stat { padding: 26px; border-radius: 20px; border: 1px solid var(--border); background: linear-gradient(180deg, #121212, #0b0b0b); }
+  .stat strong { display: block; font-size: clamp(40px, 5vw, 56px); font-weight: 800; letter-spacing: -0.05em; line-height: 1; font-variant-numeric: tabular-nums; }
+  .stat span { color: var(--dim); font-size: 15px; }
+
+  /* bölünmüş vitrin */
+  .split { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+  .split .phone { margin-inline: auto; transform: rotate(-3deg); }
+  .checks { list-style: none; margin-top: 26px; display: grid; gap: 14px; }
+  .checks li { display: flex; gap: 12px; color: var(--dim); }
+  .checks li::before { content: ""; flex: none; width: 20px; height: 20px; margin-top: 3px; border-radius: 50%; background: var(--red-deep) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M6 10.5l2.5 2.5L14 7.5' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/100%; }
+  .checks b { color: var(--fg); font-weight: 600; }
+
+  /* son çağrı */
+  .final { text-align: center; padding: 140px 0; overflow: hidden; }
+  .final::before { content: ""; position: absolute; inset: 20% 10% 0; background: radial-gradient(50% 50% at 50% 60%, rgba(187,42,42,.3), transparent 70%); pointer-events: none; }
+  .final h2 { margin-inline: auto; font-size: clamp(42px, 8vw, 96px); max-width: 14ch; }
+  .final .sub { margin: 0 auto; }
+  .final .cta { justify-content: center; }
+
+  footer { border-top: 1px solid var(--border); padding: 32px 0 calc(32px + env(safe-area-inset-bottom)); color: var(--dim); font-size: 14px; }
+  footer .wrap { display: flex; flex-wrap: wrap; gap: 14px 24px; justify-content: space-between; align-items: center; }
+  footer nav { all: unset; display: flex; gap: 20px; flex-wrap: wrap; }
+  footer a:hover { color: var(--fg); }
+
+  /* görünür olunca */
+  .rv { opacity: 0; transform: translateY(28px); transition: opacity .9s var(--ease), transform .9s var(--ease); }
+  .rv.in { opacity: 1; transform: none; }
+
+  @media (max-width: 900px) {
+    .hero .wrap, .split { grid-template-columns: 1fr; }
+    .hero { padding-top: 110px; }
+    .ring-wrap { width: min(340px, 78vw); }
+    .chip.a { left: -4%; } .chip.b { right: -4%; }
+    .features { grid-template-columns: 1fr; }
+    .f, .f.big { grid-column: auto; min-height: 0; }
+    .f .num { display: none; }
+    .flow { grid-template-columns: 1fr; }
+    .step + .step { border-left: 0; border-top: 1px solid var(--border); }
+    .stats { grid-template-columns: repeat(2, 1fr); }
+    .phones .phone.l, .phones .phone.r { display: none; }
+    section { padding: 80px 0; }
+  }
+  @media (max-width: 480px) { nav .btn-ghost { display: none; } .chip { font-size: 12px; } .chip b { font-size: 15px; } }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+    .rv { opacity: 1; transform: none; }
+    html { scroll-behavior: auto; }
+  }
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute">
+  <defs>
+    <linearGradient id="lg" x1="32" y1="38" x2="76" y2="52" gradientUnits="userSpaceOnUse"><stop stop-color="#ff6b6b"/><stop offset="1" stop-color="#bb2a2a"/></linearGradient>
+    <symbol id="logo" viewBox="0 0 108 108">
+      <rect width="108" height="108" rx="25" fill="#0a0a0a"/>
+      <rect x="1.5" y="1.5" width="105" height="105" rx="23.5" fill="none" stroke="#fff" stroke-opacity=".14" stroke-width="3"/>
+      <path d="M32 38L54 52L76 44" fill="none" stroke="url(#lg)" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M32 70H76" stroke="#f5f5f5" stroke-width="9" stroke-linecap="round"/>
+    </symbol>
+  </defs>
+</svg>
+
+<nav id="nav">
+  <div class="wrap">
+    <a class="brand" href="#"><svg><use href="#logo"/></svg>Aktaş Fit</a>
+    <div style="display:flex;gap:10px">
+      <a class="btn btn-ghost" href="#nasil">Nasıl çalışır</a>
+      <a class="btn btn-red" href="/indir/AktasFit.apk" download>İndir</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="grid-bg"></div>
+  <div class="wrap">
+    <div>
+      <span class="eyebrow rv"><i></i>Android · Yapay zekâ · Samsung Health</span>
+      <h1 class="rv">Yağ <span class="down">insin.</span><br>Kas kalsın.</h1>
+      <p class="lead rv">Tabağının fotoğrafını çek, gerisini Aktaş Fit halletsin. <b>Ölçülen yakımına göre</b> hedefini her gün yeniden kurar, ay sonunda hesabı tutturur.</p>
+      <div class="cta rv">
+        <a class="btn btn-red btn-lg" href="/indir/AktasFit.apk" download>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0l-5-5m5 5l5-5M5 21h14"/></svg>
+          APK'yı indir
+        </a>
+        <a class="btn btn-ghost btn-lg" href="#ozellikler">Neler yapıyor?</a>
+      </div>
+      <p class="meta rv">Ücretsiz · Reklamsız · Verin telefonunda kalır</p>
+    </div>
+    <div class="ring-wrap rv" aria-label="Günlük kalori halkası">
+      <svg viewBox="0 0 200 200">
+        <defs><linearGradient id="rg" x1="0" y1="0" x2="200" y2="200" gradientUnits="userSpaceOnUse"><stop stop-color="#ff8a8a"/><stop offset="1" stop-color="#bb2a2a"/></linearGradient></defs>
+        <circle class="ring-track" cx="100" cy="100" r="86" fill="none" stroke-width="12"/>
+        <circle class="ring-bar" id="ring" cx="100" cy="100" r="86" fill="none" stroke-width="12" stroke-dasharray="540.35" stroke-dashoffset="540.35"/>
+      </svg>
+      <div class="ring-center">
+        <small>KALAN</small>
+        <strong id="kcal">1 906</strong>
+        <span>kcal</span>
+      </div>
+      <div class="chip a"><span>Bugün yakılan</span><b>1 408 kcal</b></div>
+      <div class="chip b"><span>Ay dengesi</span><b class="r">−145 kcal</b></div>
+    </div>
+  </div>
+</header>
+
+<div class="marquee" aria-hidden="true">
+  <div>
+    <span>Fotoğraftan kalori</span><span>Barkod tarama</span><span>380 yerli besin</span><span>Samsung Health</span><span>Sesli asistan</span><span>Aylık denge</span><span>Tarif önerisi</span><span>Okul menüsü PDF'i</span><span>Widget</span><span>Akıllı hatırlatma</span>
+    <span>Fotoğraftan kalori</span><span>Barkod tarama</span><span>380 yerli besin</span><span>Samsung Health</span><span>Sesli asistan</span><span>Aylık denge</span><span>Tarif önerisi</span><span>Okul menüsü PDF'i</span><span>Widget</span><span>Akıllı hatırlatma</span>
+  </div>
+</div>
+
+<section id="ozellikler">
+  <div class="wrap">
+    <p class="kicker rv">Kalori saymak bu kadar az uğraş istememişti</p>
+    <h2 class="rv">Çek. Onayla. Bitti.</h2>
+    <p class="sub rv">Gramları tahmin etmek, listeden tek tek seçmek yok. Yapay zekâ tabağı tanır, değerleri doğrulanmış besin veritabanından alır; sen yalnızca onaylarsın.</p>
+
+    <div class="phones rv">
+      <div class="phone l"><img src="/img/06-progress.jpg" alt="İlerleme ekranı" loading="lazy" /></div>
+      <div class="phone"><img src="/img/01-today.jpg" alt="Bugün ekranı: kalan kalori halkası" /></div>
+      <div class="phone r"><img src="/img/22-recipes-ready.jpg" alt="Tarif önerileri" loading="lazy" /></div>
+    </div>
+
+    <div class="features">
+      <div class="f big rv">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h3l2-3h6l2 3h3v11H4z"/><circle cx="12" cy="13" r="3.5"/></svg></div>
+        <h3>Fotoğraftan kalori</h3>
+        <p>Claude ya da Gemini tabağı kalem kalem ayırır, gramı tahmin eder. Besin değerini model uydurmaz: her kalem veritabanındaki kayda bağlanır.</p>
+        <span class="num">01</span>
+      </div>
+      <div class="f big rv">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l3-8 4 16 3-8h4"/></svg></div>
+        <h3>Ölçülen yakım</h3>
+        <p>Formül değil, gerçek veri. Samsung Health'teki adım, egzersiz ve toplam yakım okunur; kilo eğiliminle birlikte senin gerçek TDEE'n hesaplanır.</p>
+        <span class="num">02</span>
+      </div>
+      <div class="f rv">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="17" rx="3"/><path d="M3 9h18M8 2v4M16 2v4"/></svg></div>
+        <h3>Aylık denge</h3>
+        <p>Bugün aştın mı? Fazla kalan günlere sessizce dağılır; hiçbir gün ±%15'ten fazla oynamaz.</p>
+      </div>
+      <div class="f rv">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0014 0M12 18v3"/></svg></div>
+        <h3>Asistan</h3>
+        <p>"Öğlen iki dilim pizza yedim" de, kaydı o yapsın. Sesle, yazıyla ya da fotoğrafla; her değişiklik geri alınabilir.</p>
+      </div>
+      <div class="f rv">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5v14M7 5v14M11 5v14M14 5v14M18 5v14M20 5v14"/></svg></div>
+        <h3>Barkod ve 380 besin</h3>
+        <p>Yerli market ürünleri Open Food Facts'ten, ev yemekleri Türkçe arama destekli katalogdan.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="nasil" style="background:var(--bg2);border-block:1px solid var(--border)">
+  <div class="wrap">
+    <p class="kicker rv">Nasıl çalışır</p>
+    <h2 class="rv">Plan senin bedenine göre kendini düzeltir.</h2>
+    <div class="flow rv">
+      <div class="step"><h3>Ölç</h3><p>Samsung Health'ten yakım, tartı ve vücut kompozisyonu gelir. Kurulumda yalnız hedef kilo ve hızını seçersin.</p></div>
+      <div class="step"><h3>Kaydet</h3><p>Fotoğraf, yazı, barkod ya da hazır yemek. Günlük kayıt saniyeler sürer, bildirimden bile eklenir.</p></div>
+      <div class="step"><h3>Dengele</h3><p>Motor her gün gerçek alımını çözer, açığı korur. Kas için protein hedefi sabit kalır.</p></div>
+    </div>
+    <div class="stats">
+      <div class="stat rv"><strong data-to="380">0</strong><span>doğrulanmış besin</span></div>
+      <div class="stat rv"><strong data-to="25" data-suffix="%">0</strong><span>en fazla günlük açık</span></div>
+      <div class="stat rv"><strong data-to="98">0</strong><span>otomatik test</span></div>
+      <div class="stat rv"><strong data-to="0">0</strong><span>reklam, hesap, abonelik</span></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap split">
+    <div class="phone rv"><img src="/img/05-ai-result.jpg" alt="Yapay zekâ ile eklenen öğün" loading="lazy" /></div>
+    <div>
+      <p class="kicker rv">Senin verin, senin telefonun</p>
+      <h2 class="rv">Hesap yok. Bulut yok. Takip yok.</h2>
+      <p class="sub rv">Aktaş Fit'in sunucusu yok. Kayıtların telefondaki tek bir dosyada durur; istediğinde dışa aktarırsın.</p>
+      <ul class="checks rv">
+        <li><span><b>Kendi API anahtarın:</b> yapay zekâ isteği doğrudan Anthropic ya da Google'a gider, arada kimse yok.</span></li>
+        <li><span><b>Her sonuç onaydan geçer:</b> emin olunmayan kalemler işaretlenir, gramı düzeltirsen kalibrasyon öğrenir.</span></li>
+        <li><span><b>Widget ve bildirim:</b> kalan kalori ana ekranda, öğün hatırlatması tam zamanında.</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="final">
+  <div class="wrap" style="position:relative">
+    <h2 class="rv">Bugün başla. <span style="color:var(--red)">Ay sonunda</span> gör.</h2>
+    <p class="sub rv">Android 11 ve üstü. Samsung Health olmadan da çalışır; olursa çok daha isabetli.</p>
+    <div class="cta rv">
+      <a class="btn btn-red btn-lg" href="/indir/AktasFit.apk" download>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0l-5-5m5 5l5-5M5 21h14"/></svg>
+        Aktaş Fit'i indir
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 <a href="https://akts.tr">Akts Studio</a></span>
+    <nav>
+      <a href="https://akts.tr">Akts ağı</a>
+      <a href="https://ezan.akts.tr">MehtApp</a>
+      <a href="https://studytrack.tr">StudyTrack</a>
+    </nav>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var nav = document.getElementById('nav');
+  addEventListener('scroll', function () { nav.classList.toggle('scrolled', scrollY > 10); }, { passive: true });
+
+  var fmt = function (n) { return Math.round(n).toLocaleString('tr-TR').replace(/\./g, ' '); };
+
+  // Halka: hedef 1906, yenen 520 → kalan 1386.
+  var ring = document.getElementById('ring'), kcal = document.getElementById('kcal');
+  var C = 540.35, goal = 1906, eaten = 520;
+  function setRing(e) { ring.style.strokeDashoffset = C * (e / goal); kcal.textContent = fmt(goal - e); }
+  if (reduce) { setRing(eaten); }
+  else {
+    setRing(0);
+    var t0;
+    requestAnimationFrame(function step(t) {
+      t0 = t0 || t; var p = Math.min(1, (t - t0 - 400) / 1600);
+      if (p < 0) { requestAnimationFrame(step); return; }
+      setRing(eaten * (1 - Math.pow(1 - p, 4)));
+      if (p < 1) requestAnimationFrame(step);
+    });
+  }
+
+  function count(el) {
+    var to = +el.dataset.to, suf = el.dataset.suffix || '';
+    if (reduce || !to) { el.textContent = fmt(to) + suf; return; }
+    var t0;
+    requestAnimationFrame(function step(t) {
+      t0 = t0 || t; var p = Math.min(1, (t - t0) / 1200);
+      el.textContent = fmt(to * (1 - Math.pow(1 - p, 3))) + suf;
+      if (p < 1) requestAnimationFrame(step);
+    });
+  }
+
+  var io = new IntersectionObserver(function (es) {
+    es.forEach(function (e) {
+      if (!e.isIntersecting) return;
+      e.target.classList.add('in');
+      var s = e.target.querySelector('[data-to]'); if (s) count(s);
+      io.unobserve(e.target);
+    });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.rv').forEach(function (el, i) {
+    el.style.transitionDelay = (i % 4) * 80 + 'ms';
+    io.observe(el);
+  });
+})();
+</script>
+</body>
+</html>
