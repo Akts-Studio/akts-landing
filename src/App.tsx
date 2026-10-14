@@ -67,9 +67,7 @@ export default function App() {
             style={{ '--d': '.02s' } as CSSProperties}
           >
             Uygulamalar, siteler{' '}
-            <span className="bg-gradient-to-br from-foreground to-muted-foreground bg-clip-text text-transparent">
-              ve servisler.
-            </span>
+            <span style={{ color: 'var(--brand-accent)' }}>ve servisler.</span>
           </h1>
           <p
             className="anim mt-5 max-w-[50ch] text-[clamp(1rem,2vw,1.15rem)] leading-relaxed text-muted-foreground"
@@ -83,9 +81,9 @@ export default function App() {
             <SectionTitle count={apps.length} delay={0.13}>
               Uygulamalar
             </SectionTitle>
-            <div className="grid gap-4 sm:grid-cols-2">
+            <div className="grid gap-4 md:grid-cols-3">
               {apps.map((app, i) => (
-                <AppShowcase key={app.href} app={app} delay={0.17 + i * 0.06} />
+                <AppShowcase key={app.href} app={app} index={i} delay={0.17 + i * 0.06} />
               ))}
             </div>
           </section>

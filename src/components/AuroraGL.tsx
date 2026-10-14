@@ -142,9 +142,9 @@ function readStops(): string[] {
   const pick = (name: string, fallback: string) =>
     s.getPropertyValue(name).trim() || fallback
   return [
-    pick('--c-portfolyo', '#0a7ae0'),
-    pick('--c-mailapp', '#1a73e8'),
-    pick('--c-oyun', '#6a42f0'),
+    pick('--aurora-1', '#ff5b4a'),
+    pick('--aurora-2', '#ff8a3d'),
+    pick('--aurora-3', '#c8281c'),
   ]
 }
 

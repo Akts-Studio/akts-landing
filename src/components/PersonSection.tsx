@@ -11,7 +11,7 @@ function Avatar({ person }: { person: Person }) {
   return (
     <span
       className="grid h-14 w-14 shrink-0 place-items-center rounded-full p-[2px] shadow-[0_6px_20px_rgba(0,0,0,.35)] transition-transform duration-500 group-hover/head:-rotate-6 group-hover/head:scale-105"
-      style={{ background: 'linear-gradient(135deg,var(--ring-a),var(--ring-b))' }}
+      style={{ background: 'linear-gradient(135deg,var(--brand-accent),color-mix(in srgb,var(--brand-accent) 15%,transparent))' }}
     >
       {showImage ? (
         <img
@@ -35,6 +35,7 @@ function Avatar({ person }: { person: Person }) {
 export function PersonSection({ person, delay }: { person: Person; delay: number }) {
   return (
     <GlowCard
+      accent="var(--brand-accent)"
       className="anim mt-4 overflow-hidden p-5 sm:p-6"
       style={{ '--d': `${delay}s` } as CSSProperties}
     >
@@ -53,7 +54,7 @@ export function PersonSection({ person, delay }: { person: Person; delay: number
         <ul className="min-w-0 flex-1 border-t pt-1 md:border-l md:border-t-0 md:pl-8 md:pt-0"
             style={{ borderColor: 'hsl(var(--hairline))' }}>
           {person.links.map((link, i) => (
-            <LinkRow key={link.href} item={link} delay={delay + 0.06 * (i + 1)} />
+            <LinkRow key={link.href} item={{ ...link, accent: 'var(--brand-accent)' }} delay={delay + 0.06 * (i + 1)} />
           ))}
         </ul>
       </div>

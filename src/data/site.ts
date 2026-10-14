@@ -70,7 +70,7 @@ export const apps: App[] = [
     desc: 'Fotoğraftan kalori, saatinden ölçülen yakım ve her gün yeniden dengelenen hedef.',
     href: 'https://fit.akts.tr',
     icon: 'fit',
-    shot: '/shots/aktasfit.jpg',
+    shot: '/shots/aktasfit.jpg?v=2',
     tint: 'radial-gradient(120% 90% at 50% 0%, #4a1414, #2a0b0b 55%, #120505)',
     tags: ['Android', 'Yapay zekâ', 'Widget'],
   },

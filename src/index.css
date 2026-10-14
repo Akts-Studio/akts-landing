@@ -47,7 +47,13 @@
     --c-mailapp: #1a73e8;
     --c-oyun: #e8390d;
     --c-n8n: #d43a60;
-    --c-portfolyo: #0a7ae0;
+    --c-portfolyo: #c8281c;
+
+    /* Marka vurgusu: portfolyo ve GitHub profiliyle aynı turuncu-kırmızı. */
+    --brand-accent: #c8281c;
+    --aurora-1: #ff5b4a;
+    --aurora-2: #ff8a3d;
+    --aurora-3: #c8281c;
     --c-mail: #0d9d63;
     --c-github: #24292f;
     --c-ezan: #0e7f5f;
@@ -92,7 +98,12 @@
     --c-mailapp: #4d90ff;
     --c-oyun: #ff6b3d;
     --c-n8n: #ea4b71;
-    --c-portfolyo: #3d9bff;
+    --c-portfolyo: #ff5b4a;
+
+    --brand-accent: #ff5b4a;
+    --aurora-1: #ff5b4a;
+    --aurora-2: #ff8a3d;
+    --aurora-3: #b3241a;
     --c-mail: #26c281;
     --c-github: #d8d8de;
     --c-ezan: #4fd1a5;
@@ -126,7 +137,8 @@
   }
 
   ::selection {
-    @apply bg-foreground text-background;
+    background: var(--brand-accent);
+    color: #fff;
   }
 
   /* Kaydırma çubuğu da temayı takip etsin — koyu sayfada beyaz bir
