@@ -1,6 +1,17 @@
 # Durum — akts-landing
 
-Güncelleme: 2026-10-01 | Son araç: claude
+Güncelleme: 2026-10-11 | Son araç: claude
+
+## Bilinen tuzak — Aviary (2026-10-14)
+
+Aviary "sıkıştırma yok" der ama Cloudflare br veriyor (yanlış pozitif); `alt=""` süs görsellerini "eksik" sayar. Eksik kalan tek başlık CSP, bilerek eklenmedi.
+
+## Bilinen tuzak — iCloud (2026-10-11)
+
+`~/Desktop/projects` iCloud'da; node_modules, package-lock ve hatta `.git/index`
+"dataless" kalabiliyor, tsc/git saatlerce takılıyor. Doğrulamayı scratch'e
+`rsync --exclude node_modules` + `npm ci` ile yap. Sunucuya çoklu dosya
+scp'de dizin hedefi verme: `rsync --relative` kullan (bir kez app/page.tsx ezildi).
 
 ## Hedef
 
@@ -9,6 +20,36 @@ açık iş kalmadı; sıradaki iş Ezan Vaktim uygulamasında
 (`~/Desktop/projects/ezan-vaktim`).
 
 ## Yapıldı
+
+- [x] **2026-10-14 SEO/başlık düzeltmeleri (CANLI, Aviary denetimi, OyunHub hariç):** `snippets/akts-basliklar.conf` (HSTS, nosniff, X-Frame, Referrer, Permissions) akts.tr/eymen/ezan/fit/studytrack(+app) server'larına ve kendi add_header'ı olan her location'a include edildi; nginx.conf'ta gzip_types açıldı; akts.tr'ye /assets immutable + index no-cache, eymen'e index no-cache. robots.txt + sitemap.xml beş siteye (kaynak: akts-landing/public, websitesi, ezan-vaktim/site, sunucu/fit, studytrack/site/public). Başlıklar akts.tr ve eymen'de uzatıldı; fit ve studytrack'e canonical, studytrack'e OG. studytrack ve akts.tr index'i sunucuda elle yamandı (yeniden derlenmedi, kaynak da güncel). Yedekler `/root/nginx-yedek-20261014-2224/`, `/root/seo-yedek-20261014.tgz`. Diğer depolardaki (websitesi, ezan-vaktim, studytrack) değişiklikler commit'lenmedi.
+
+- [x] **2026-10-14 fit.akts.tr (CANLI):** kaynak `sunucu/fit/` → `/var/www/fit.akts.tr/`, APK `/indir/AktasFit.apk` (elle rsync), nginx `sites-available/fit.akts.tr` (öz-imzalı, Cloudflare önde). Landing `apps`'te Aktaş Fit, portfolyoda bağlantı. Cloudflare 404'ü önbelleğe alıyor: yeni dosyaya `?v=` ver. Yedek `/root/akts.tr-yedek-2026-10-14-fit.tgz`.
+
+- [x] **2026-10-14 ortak Akts 404 (CANLI):** `/var/www/akts-404/404.html` (kaynak `sunucu/akts-404/`), `snippets/akts-404.conf` akts.tr/eymen/oyun, ezan, studytrack(+app), mail bloklarına include edildi; blankreel ve maskepacks hariç. Yedekler `/root/*.nginx.yedek-20261014-*-404`. akts.tr apex artık =404 ile bitiyor ($uri.html dahil); React NotFound prod'da kullanılmıyor. oyun/studytrack SPA fallback yüzünden 404 vermez. Sayfa animasyonlu, reduced-motion guard var.
+
+- [x] **2026-10-11 GitHub profil README'si (eymenaktas/eymenaktas, CANLI):** tüm görseller
+      depodaki betiklerle üretiliyor (`scripts/butonlar.mjs`, `scripts/gorseller.mjs` → `output` dalı);
+      shields/capsule/typing-svg/komarev kalktı. Görüntülenme sayacı akts.tr sunucusunda:
+      pm2 `profil-sayac` (127.0.0.1:8794, `/srv/profil-sayac/sayi.json`), nginx `location = /sayac/profil`
+      (yedek `/root/akts.tr.nginx.yedek-20261011-sayac`); komarev'den 155 ile başlatıldı.
+
+- [x] **2026-10-11 hukuki risk temizliği (tüm projeler, CANLI):** Google Fonts
+      her yerde yerelden (portfolyo, OyunHub, studytrack.tr + yasal + hesap-sil,
+      BlankReel); canlıda Google'a 0 istek ölçüldü. BlankReel: Sentry replay
+      kapalı, kayıtta zorunlu 16+ kutusu, plan butonu altında yenileme şartı.
+      StudyTrack: kayıt metni + yasal sayfada 13 yaş. Gizlilik metinleri
+      güncellendi (landing 218d374, portfolyo e5ddeae, studytrack 68a5f65).
+      Canlı yedekleri: `*.yedek-20261011-*`, `/root/akts.tr-yedek-2026-10-11.tgz`,
+      `/srv/blankreel/**.bak.20261011-*`.
+      ÇÖZÜLDÜ (2026-10-14): BlankReel e583e64 üzerine rebase edilip push edildi (f66061e → 2b18834); MCP işi 4eda5a8'e kadar canlı dalda.
+      web2: 7e57df9 push edildi (`yerel-oyunlar` dalı); `.git/index` iCloud'da dataless'tı,
+      `.git/index.icloud-dataless` olarak kenara alınıp HEAD'den yeniden kuruldu.
+      DMCA ajan kaydı Eymen'de (copyright.gov, BlankReel için).
+
+- [x] 2026-10-10: `.claude/launch.json`'a `mehtapp-landing-vakit` (4201) eklendi;
+      4200 başka oturumun. İş ezan-vaktim'deydi, oranın state.md'sine bak.
+
+- [x] Yanlışlıkla açılan PR (Akts-Studio/akts-landing#1) 2026-10-10'da kapatıldı, dal duruyor.
 
 - [x] Gizlilik metni, footer, 404 sayfası (6f2571c)
 - [x] Aurora WebGL'e taşındı, footer giriş animasyonu kaldırıldı (81ff62f)
