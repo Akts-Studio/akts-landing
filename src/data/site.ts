@@ -67,7 +67,7 @@ export const apps: App[] = [
   {
     name: 'Aktaş Fit',
     tagline: 'Yağ insin, kas kalsın',
-    desc: 'Fotoğraftan kalori, Samsung Health\'ten ölçülen yakım ve her gün yeniden dengelenen hedef.',
+    desc: 'Fotoğraftan kalori, saatinden ölçülen yakım ve her gün yeniden dengelenen hedef.',
     href: 'https://fit.akts.tr',
     icon: 'fit',
     shot: '/shots/aktasfit.jpg',
