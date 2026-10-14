@@ -113,7 +113,7 @@ export const people: Person[] = [
   {
     name: 'Eymen Aktaş',
     role: 'Minecraft ekosistemi · makine öğrenmesi',
-    avatar: '/assets/profile.jpg',
+    avatar: '/assets/profile.jpg?v=2',
     initials: 'EA',
     aka: 'MaskeDev',
     links: [
