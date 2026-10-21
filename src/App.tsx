@@ -4,10 +4,10 @@ import { ClickSpark } from '@/components/ClickSpark'
 import { CountUp } from '@/components/CountUp'
 import { AppShowcase } from '@/components/AppShowcase'
 import { Footer } from '@/components/Footer'
+import { Navbar } from '@/components/Navbar'
 import { LogoDefs } from '@/components/Logos'
 import { PersonSection } from '@/components/PersonSection'
 import { ServiceCard } from '@/components/ServiceCard'
-import { ThemeToggle } from '@/components/ThemeToggle'
 import { UpcomingCard } from '@/components/UpcomingCard'
 import { apps, people, services, upcoming } from '@/data/site'
 
@@ -49,17 +49,9 @@ export default function App() {
       />
       <LogoDefs />
 
+      <Navbar />
       <div className="mx-auto flex min-h-dvh w-full max-w-4xl flex-col px-6 sm:px-8">
-        <header className="flex items-center justify-between py-6">
-          <a
-            href="/"
-            className="group flex items-center gap-2 text-[15px] font-semibold tracking-[-0.02em] text-muted-foreground transition-colors duration-300 hover:text-foreground"
-          >
-            <img src="/brand/akts-studio.svg" alt="" className="h-6 w-6 rounded-[6px]" />
-            Akts Studio
-          </a>
-          <ThemeToggle />
-        </header>
+        
 
         <main className="my-auto flex-1 pb-10 pt-10 sm:pt-16">
           <h1
@@ -77,7 +69,7 @@ export default function App() {
             servisleri. Hepsi tek çatı altında.
           </p>
 
-          <section className="mt-14">
+          <section id="uygulamalar" className="mt-14 scroll-mt-24">
             <SectionTitle count={apps.length} delay={0.13}>
               Uygulamalar
             </SectionTitle>
@@ -88,7 +80,7 @@ export default function App() {
             </div>
           </section>
 
-          <section className="mt-14">
+          <section id="servisler" className="mt-14 scroll-mt-24">
             <SectionTitle count={services.length} delay={0.17}>
               Siteler ve servisler
             </SectionTitle>
@@ -114,7 +106,7 @@ export default function App() {
 
           {/* Yeni kişi eklemek için src/data/site.ts içindeki `people`
               dizisine bir nesne ekle — burada değişiklik gerekmiyor. */}
-          <section className="mt-14">
+          <section id="kisiler" className="mt-14 scroll-mt-24">
             <SectionTitle count={people.length} delay={0.53}>
               Kişiler
             </SectionTitle>

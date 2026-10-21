@@ -1,5 +1,6 @@
 import type { CSSProperties } from 'react'
 import { ArrowUpRight } from 'lucide-react'
+import { RimCard } from '@/components/RimCard'
 import { Logo } from '@/components/Logos'
 import type { App } from '@/data/site'
 
@@ -11,10 +12,14 @@ const TILT = ['-5deg', '0deg', '5deg']
 /** Uygulama vitrini: üstte uygulamanın kendi renginde panel ve alttan taşan telefon, altta künye. */
 export function AppShowcase({ app, delay, index }: { app: App; delay: number; index: number }) {
   return (
+    <RimCard
+      accent="var(--brand-accent)"
+      className="anim h-full"
+      style={{ '--d': `${delay}s`, '--tilt': TILT[index % 3] } as CSSProperties}
+    >
     <a
       href={app.href}
-      className="anim group flex h-full flex-col overflow-hidden rounded-[var(--radius)] border bg-card shadow-[inset_0_1px_#ffffff0d] transition-[border-color,transform] duration-500 [transition-timing-function:cubic-bezier(.22,1,.36,1)] hover:-translate-y-1.5 hover:border-foreground/20"
-      style={{ '--d': `${delay}s`, '--tilt': TILT[index % 3] } as CSSProperties}
+      className="group flex h-full flex-col overflow-hidden rounded-[var(--radius)]"
     >
       <div className="relative h-60 overflow-hidden" style={{ background: app.tint }}>
         {/* Panelin altına doğru erime: telefon kesik değil, içeri gömülü görünsün. */}
@@ -56,5 +61,6 @@ export function AppShowcase({ app, delay, index }: { app: App; delay: number; in
         </div>
       </div>
     </a>
+    </RimCard>
   )
 }

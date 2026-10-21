@@ -1,6 +1,6 @@
 import type { CSSProperties } from 'react'
 import { ArrowUpRight } from 'lucide-react'
-import { GlowCard } from '@/components/GlowCard'
+import { RimCard } from '@/components/RimCard'
 import { Logo } from '@/components/Logos'
 import { cn } from '@/lib/utils'
 import type { Link } from '@/data/site'
@@ -26,7 +26,7 @@ export function ServiceCard({ item, delay }: { item: Link; delay: number }) {
       )}
       style={{ '--d': `${delay}s` } as CSSProperties}
     >
-      <GlowCard
+      <RimCard
         accent={item.accent}
         className={cn(
           'h-full p-5 sm:p-6',
@@ -90,7 +90,7 @@ export function ServiceCard({ item, delay }: { item: Link; delay: number }) {
             !wide && 'absolute right-5 top-5 sm:right-6 sm:top-6',
           )}
         />
-      </GlowCard>
+      </RimCard>
     </a>
   )
 }

@@ -1,5 +1,5 @@
 import { useState, type CSSProperties } from 'react'
-import { GlowCard } from '@/components/GlowCard'
+import { RimCard } from '@/components/RimCard'
 import { LinkRow } from '@/components/LinkRow'
 import type { Person } from '@/data/site'
 
@@ -34,7 +34,7 @@ function Avatar({ person }: { person: Person }) {
 
 export function PersonSection({ person, delay }: { person: Person; delay: number }) {
   return (
-    <GlowCard
+    <RimCard
       accent="var(--brand-accent)"
       className="anim mt-4 overflow-hidden p-5 sm:p-6"
       style={{ '--d': `${delay}s` } as CSSProperties}
@@ -58,6 +58,6 @@ export function PersonSection({ person, delay }: { person: Person; delay: number
           ))}
         </ul>
       </div>
-    </GlowCard>
+    </RimCard>
   )
 }

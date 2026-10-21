@@ -1,5 +1,5 @@
 import type { CSSProperties } from 'react'
-import { GlowCard } from '@/components/GlowCard'
+import { RimCard } from '@/components/RimCard'
 import { Logo } from '@/components/Logos'
 import type { Upcoming } from '@/data/site'
 
@@ -12,7 +12,7 @@ import type { Upcoming } from '@/data/site'
 export function UpcomingCard({ item, delay }: { item: Upcoming; delay: number }) {
   return (
     <div className="anim group block rounded-[var(--radius)]" style={{ '--d': `${delay}s` } as CSSProperties}>
-      <GlowCard accent={item.accent} className="flex h-full items-center gap-5 p-5 sm:gap-6 sm:p-6">
+      <RimCard accent={item.accent} className="flex h-full items-center gap-5 p-5 sm:gap-6 sm:p-6">
         <span
           className="grid h-14 w-14 shrink-0 place-items-center rounded-xl border"
           style={{
@@ -47,7 +47,7 @@ export function UpcomingCard({ item, delay }: { item: Upcoming; delay: number })
 
         {/* Dar ekranda açıklamayı sıkıştırıyor; rozet zaten aynı şeyi söylüyor. */}
         <span className="hidden shrink-0 text-xs text-dim sm:block">yakında</span>
-      </GlowCard>
+      </RimCard>
     </div>
   )
 }

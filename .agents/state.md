@@ -1,6 +1,10 @@
 # Durum — akts-landing
 
-Güncelleme: 2026-10-14 | Son araç: claude
+Güncelleme: 2026-10-22 | Son araç: claude
+
+## 2026-10-22 (CANLI, index-DYagB64T.js)
+
+21 Ekim öncesine geri alınmıştı; yalnız kart efekti (RimCard, rAF'lı pointermove) ve BlankReel tarzı liquid glass Navbar (logo, bağlantılar, tema, Discord hapı) geri eklendi. Yıldız zemini, 3D ve Discord durumu YOK. legal.ts'e dokunulmadı. Derleme scratch kopyada, `rsync -a dist/` (--delete yok).
 
 ## 2026-10-14 tema (CANLI)
 
