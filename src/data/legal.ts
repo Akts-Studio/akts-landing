@@ -115,8 +115,12 @@ export const privacySections: LegalSection[] = [
         'seçimin gider; kim olduğun kaydedilmez, oyun senin adınla ' +
         'eşleştirilmez. Sayacın yenilemeyle şişirilmesini önlemek için IP ' +
         'adresin oynama sayacında 30 saniye, beğeni oyunda 10 saniye ' +
-        'bellekte tutulur ve diske yazılmaz. Hangi oyunları beğendiğin ' +
-        'yalnızca kendi tarayıcında saklanır.',
+        'bellekte tutulur ve diske yazılmaz. Reklam engelleyici kapısında ' +
+        'kodun tahminle bulunmasını önlemek için yanlış denemeler IP ' +
+        'adresiyle en çok bir saat bellekte sayılır, sonra silinir. Hangi ' +
+        'oyunları beğendiğin yalnızca kendi tarayıcında saklanır. Bu ' +
+        'sayılardan ayrıca gün başına toplamlar (o gün kaç oyun açıldı, ' +
+        'kaç dakika oynandı) tutulur; bunlarda da kişiye ait bilgi yoktur.',
     ],
   },
   {

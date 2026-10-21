@@ -7,7 +7,9 @@ import { Footer } from '@/components/Footer'
 import { LogoDefs } from '@/components/Logos'
 import { PersonSection } from '@/components/PersonSection'
 import { ServiceCard } from '@/components/ServiceCard'
-import { ThemeToggle } from '@/components/ThemeToggle'
+import { Hero3D } from '@/components/Hero3D'
+import { Navbar } from '@/components/Navbar'
+import { SpaceBackdrop } from '@/components/SpaceBackdrop'
 import { UpcomingCard } from '@/components/UpcomingCard'
 import { apps, people, services, upcoming } from '@/data/site'
 
@@ -15,14 +17,17 @@ function SectionTitle({
   children,
   count,
   delay,
+  id,
 }: {
   children: string
   count: number
   delay: number
+  id?: string
 }) {
   return (
     <div
-      className="anim mb-5 flex items-center gap-3"
+      id={id}
+      className="title-in mb-5 flex scroll-mt-20 items-center gap-3"
       style={{ '--d': `${delay}s` } as CSSProperties}
     >
       <h2 className="text-xs font-semibold uppercase tracking-[0.1em] text-dim">{children}</h2>
@@ -37,31 +42,14 @@ export default function App() {
     <>
       <AuroraGL />
       <ClickSpark />
-      {/* İnce nokta dokusu — düz zemine derinlik veriyor, okunurluğa
-          dokunmayacak kadar soluk (%. birkaç). */}
-      <div
-        aria-hidden="true"
-        className="pointer-events-none fixed inset-0 -z-10 opacity-[0.35] [background-size:22px_22px] [mask-image:radial-gradient(70%_60%_at_50%_0%,#000,transparent)]"
-        style={{
-          backgroundImage:
-            'radial-gradient(circle at 1px 1px, hsl(var(--hairline)) 1px, transparent 0)',
-        }}
-      />
+      <SpaceBackdrop />
       <LogoDefs />
+      <Navbar />
 
-      <div className="mx-auto flex min-h-dvh w-full max-w-4xl flex-col px-6 sm:px-8">
-        <header className="flex items-center justify-between py-6">
-          <a
-            href="/"
-            className="group flex items-center gap-2 text-[15px] font-semibold tracking-[-0.02em] text-muted-foreground transition-colors duration-300 hover:text-foreground"
-          >
-            <img src="/brand/akts-studio.svg" alt="" className="h-6 w-6 rounded-[6px]" />
-            Akts Studio
-          </a>
-          <ThemeToggle />
-        </header>
-
-        <main className="my-auto flex-1 pb-10 pt-10 sm:pt-16">
+      <div className="mx-auto flex min-h-[calc(100dvh-3.5rem)] w-full max-w-4xl flex-col px-6 sm:px-8">
+        <main className="my-auto flex-1 pb-10 pt-8 sm:pt-12">
+          <div className="grid items-center gap-6 md:grid-cols-[1fr_minmax(0,300px)]">
+          <div>
           <h1
             className="anim max-w-[18ch] text-[clamp(2.25rem,7.5vw,4rem)] font-semibold leading-[1.04] tracking-[-0.045em]"
             style={{ '--d': '.02s' } as CSSProperties}
@@ -76,9 +64,12 @@ export default function App() {
             Akts Studio'nun Android uygulamaları, web siteleri ve kendi sunucusunda çalışan
             servisleri. Hepsi tek çatı altında.
           </p>
+          </div>
+          <Hero3D className="mx-auto aspect-square w-44 sm:w-56 md:w-full" />
+          </div>
 
           <section className="mt-14">
-            <SectionTitle count={apps.length} delay={0.13}>
+            <SectionTitle id="uygulamalar" count={apps.length} delay={0.13}>
               Uygulamalar
             </SectionTitle>
             <div className="grid gap-4 md:grid-cols-3">
@@ -89,7 +80,7 @@ export default function App() {
           </section>
 
           <section className="mt-14">
-            <SectionTitle count={services.length} delay={0.17}>
+            <SectionTitle id="servisler" count={services.length} delay={0.17}>
               Siteler ve servisler
             </SectionTitle>
             <div className="grid gap-4 sm:grid-cols-2">
@@ -115,7 +106,7 @@ export default function App() {
           {/* Yeni kişi eklemek için src/data/site.ts içindeki `people`
               dizisine bir nesne ekle — burada değişiklik gerekmiyor. */}
           <section className="mt-14">
-            <SectionTitle count={people.length} delay={0.53}>
+            <SectionTitle id="kisiler" count={people.length} delay={0.53}>
               Kişiler
             </SectionTitle>
             <div className="grid gap-4">

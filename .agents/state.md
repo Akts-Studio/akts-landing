@@ -218,3 +218,8 @@ yeter, bölüm kendiliğinden görünür.
   (**`--delete` kullanma**: `ezan/`, `studytrack/` ve `maske/` dizinleri orada).
 - `.claude/launch.json`'daki `maske-site` girdisi maske-pack önizlemesi içindir;
   landing commit'ine girmesin.
+
+## 2026-10-21 · claude (Nemy turu, alt ajan)
+Yapıldı: aka Nemy; RimCard sahnesi (rim+ark+parlama+parıltı+filigran+dağıtılma), uzay zemini (yıldız paralaks+grain), Navbar (camlaşan, Discord), Hero3D küp + köşe ay kayaları (akts-3d.js bağlı, tembel parça), Discord canlı durum (src/lib/discord.ts, ?discord=ornek). Commit YOK.
+Sıradaki adım: Eymen gözden geçirsin → commit → `npm run build && rsync -a dist/ akts:/var/www/akts.tr/` (--delete yok). Bot API'si (akts.tr/api/discord) canlıya çıkınca kart kendiliğinden canlanır.
+Tuzaklar: headless Chromium'da WebGL yazılımla çalışınca harness visual.sh 768'de screenshot timeout veriyor — `--use-angle=metal --enable-gpu` ile çalışıyor. StrictMode dev'de efekt iki kez kurulunca destroy() loseContext yaptığı için 3D yuvası dev'de CSS yedeğine düşebilir (prod'da sorun yok). Filigran kartın dışına taşarsa 375'te yatay kaydırma yapıyor (right:0 tut).

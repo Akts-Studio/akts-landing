@@ -40,6 +40,62 @@
         "/Users/eymen/Desktop/projects/studytrack/web-dist"
       ],
       "port": 4190
+    },
+    {
+      "name": "mehtapp-landing",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": [
+        "--prefix",
+        "/Users/eymen/Desktop/projects/ezan-wt/site/web-landing",
+        "run",
+        "dev",
+        "--",
+        "--port",
+        "4200",
+        "--strictPort"
+      ],
+      "port": 4200
+    },
+    {
+      "name": "mehtapp-site",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": [
+        "-m",
+        "http.server",
+        "4196",
+        "--directory",
+        "/Users/eymen/Desktop/projects/ezan-wt/site/site"
+      ],
+      "port": 4196
+    },
+    {
+      "name": "mehtapp-landing-vakit",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": [
+        "--prefix",
+        "/Users/eymen/Desktop/projects/ezan-wt/site/web-landing",
+        "run",
+        "dev",
+        "--",
+        "--port",
+        "4201",
+        "--strictPort"
+      ],
+      "port": 4201
+    },
+    {
+      "name": "blankreel",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": [
+        "--prefix",
+        "/Users/eymen/Desktop/projects/blankreel",
+        "run",
+        "dev",
+        "--",
+        "--port",
+        "4210"
+      ],
+      "port": 4210
     }
   ]
 }

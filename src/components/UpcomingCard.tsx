@@ -11,8 +11,8 @@ import type { Upcoming } from '@/data/site'
  */
 export function UpcomingCard({ item, delay }: { item: Upcoming; delay: number }) {
   return (
-    <div className="anim group block rounded-[var(--radius)]" style={{ '--d': `${delay}s` } as CSSProperties}>
-      <GlowCard accent={item.accent} className="flex h-full items-center gap-5 p-5 sm:gap-6 sm:p-6">
+    <div className="group block rounded-[var(--radius)]" style={{ '--d': `${delay}s` } as CSSProperties}>
+      <GlowCard accent={item.accent} deal className="flex h-full items-center gap-5 p-5 sm:gap-6 sm:p-6">
         <span
           className="grid h-14 w-14 shrink-0 place-items-center rounded-xl border"
           style={{
