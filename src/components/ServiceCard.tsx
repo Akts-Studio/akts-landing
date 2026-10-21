@@ -21,15 +21,13 @@ export function ServiceCard({ item, delay }: { item: Link; delay: number }) {
     <a
       href={item.href}
       className={cn(
-        'group block rounded-[var(--radius)]',
+        'anim group block rounded-[var(--radius)]',
         wide && 'sm:col-span-2',
       )}
       style={{ '--d': `${delay}s` } as CSSProperties}
     >
       <GlowCard
         accent={item.accent}
-        deal
-        watermark={item.featured}
         className={cn(
           'h-full p-5 sm:p-6',
           wide ? 'flex items-center gap-5 sm:gap-6' : 'flex flex-col gap-4',

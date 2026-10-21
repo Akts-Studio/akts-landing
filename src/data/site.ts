@@ -27,8 +27,6 @@ export type Person = {
   initials: string
   /** adın hemen altında: oyun içi takma ad */
   aka?: string
-  /** Discord kullanıcı kimliği: kişi kartında canlı durum gösterilir */
-  discord?: string
   links: Link[]
 }
 
@@ -42,8 +40,6 @@ export type App = {
   shot: string
   /** vitrin panelinin zemini: uygulamanın kendi rengi */
   tint: string
-  /** kart çerçevesinin rengi (--brand) */
-  accent: string
   tags: string[]
 }
 
@@ -54,8 +50,7 @@ export const apps: App[] = [
     desc: 'Diyanet takvimiyle aynı vakitler, kilit ekranında ezan uyarısı, seri ve kaza takibi.',
     href: 'https://ezan.akts.tr',
     icon: 'ezan',
-    shot: '/shots/mehtapp.webp?v=3',
-    accent: 'var(--c-ezan)',
+    shot: '/shots/mehtapp.jpg?v=2',
     tint: 'radial-gradient(120% 90% at 50% 0%, #15523f, #0b3b2e 55%, #062419)',
     tags: ['Android', 'Galaxy Watch', 'Widget'],
   },
@@ -65,8 +60,7 @@ export const apps: App[] = [
     desc: 'Pomodoro zamanlayıcı, günlük hedef, seri ve rozetler; haftalık ve ders bazlı analiz.',
     href: 'https://studytrack.tr',
     icon: 'study',
-    shot: '/shots/studytrack.webp?v=3',
-    accent: 'var(--c-study)',
+    shot: '/shots/studytrack.jpg',
     tint: 'radial-gradient(120% 90% at 50% 0%, #e3efe7, #cde0d4 60%, #a9ccb7)',
     tags: ['Android', 'Wear OS', 'Web'],
   },
@@ -76,8 +70,7 @@ export const apps: App[] = [
     desc: 'Fotoğraftan kalori, saatinden ölçülen yakım ve her gün yeniden dengelenen hedef.',
     href: 'https://fit.akts.tr',
     icon: 'fit',
-    shot: '/shots/aktasfit.webp?v=3',
-    accent: 'var(--c-portfolyo)',
+    shot: '/shots/aktasfit.jpg?v=2',
     tint: 'radial-gradient(120% 90% at 50% 0%, #4a1414, #2a0b0b 55%, #120505)',
     tags: ['Android', 'Yapay zekâ', 'Widget'],
   },
@@ -120,10 +113,9 @@ export const people: Person[] = [
   {
     name: 'Eymen Aktaş',
     role: 'Minecraft ekosistemi · makine öğrenmesi',
-    avatar: '/assets/profile.webp?v=3',
+    avatar: '/assets/profile.jpg?v=2',
     initials: 'EA',
-    aka: 'Nemy',
-    discord: '1507392064206278919',
+    aka: 'MaskeDev',
     links: [
       {
         name: 'Portfolyo',

@@ -113,7 +113,7 @@
     --ring-a: rgba(255, 255, 255, 0.32);
     --ring-b: rgba(255, 255, 255, 0.07);
 
-    --aurora-strength: 0.15;
+    --aurora-strength: 0.22;
   }
 
   * {
@@ -209,196 +209,73 @@
 }
 
 /* ═══════════════════════════════════════════════════════════════
-   Kart sahnesi (RimCard). Teknik referansı: rim çerçeve + imleç
-   açısını izleyen ark + parlama + tek seferlik çapraz parıltı.
-   Eski imleç kenar parıltısının YERİNE ark geçti (ikisi üst üste
-   kalabalıktı). Kenarı sürekli kıpırdatan efekt YOK: ark yalnız
-   hover'da, rim durgun; ateşleme girişte bir kez.
+   Glow card — imleci takip eden kenar parıltısı.
+   İki katman: (1) kenarlığı boyayan maskeli ::before,
+   (2) kartın içine düşen çok soluk ışık ::after.
+   Konum JS'ten --mx/--my ile geliyor; imleç dışarıdayken --glow:0
+   olduğu için ikisi de tamamen sönük.
    ═══════════════════════════════════════════════════════════════ */
-@property --glare-o {
-  syntax: '<number>';
-  inherits: true;
-  initial-value: 0;
-}
 @layer components {
-  .rim-card {
-    --rim-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  .glow-card {
     position: relative;
     isolation: isolate;
     border-radius: var(--radius);
     background: hsl(var(--card));
-    transition: transform 0.56s var(--rim-ease), box-shadow 0.56s var(--rim-ease),
-      --glare-o 0.56s var(--rim-ease);
+    border: 1px solid hsl(var(--hairline));
+    transition: border-color 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+      transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
   }
-  [data-theme='dark'] .rim-card {
-    box-shadow: inset 0 1px #fff2, inset 0 24px 26px -26px #fff3, inset 0 -70px 60px -60px #0006;
-  }
-  [data-theme='light'] .rim-card {
-    box-shadow: inset 0 1px #fff, 0 1px 2px rgb(0 0 0 / 0.05), 0 8px 24px -16px rgb(0 0 0 / 0.18);
-  }
-  .rim-card > .rim-card__rim,
-  .rim-card > .rim-card__arc,
-  .rim-card > .rim-card__glare,
-  .rim-card > .rim-card__sheen {
+  .glow-card::before,
+  .glow-card::after {
+    content: '';
     position: absolute;
     inset: 0;
     border-radius: inherit;
     pointer-events: none;
+    opacity: var(--glow, 0);
+    transition: opacity 0.35s cubic-bezier(0.22, 1, 0.36, 1);
   }
-  /* 1px çerçeve: ışık alt kenarın ortasından yayılıyor, üstte soluk çizgi */
-  .rim-card__rim {
-    z-index: 2;
+  /* kenarlık: 1px'lik halkayı maskeyle bırakıyoruz */
+  .glow-card::before {
     padding: 1px;
-    background: radial-gradient(60% 96px at 50% 100%, #fff8, color-mix(in srgb, var(--brand, #888) 90%, transparent) 28%, transparent),
-      linear-gradient(hsl(var(--hairline-hi)), hsl(var(--hairline-hi)));
-    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-    -webkit-mask-composite: xor;
-    mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-    mask-composite: exclude;
-    filter: drop-shadow(0 0 5px color-mix(in srgb, var(--brand, #888) 32%, transparent));
-  }
-  [data-theme='light'] .rim-card__rim {
-    background: radial-gradient(60% 80px at 50% 100%, color-mix(in srgb, var(--brand, #888) 80%, transparent), transparent),
-      linear-gradient(hsl(var(--hairline-hi)), hsl(var(--hairline-hi)));
-    filter: none;
-  }
-  /* İmleç açısını izleyen 2.5px ark — yalnız hover'da görünür */
-  .rim-card__arc {
-    z-index: 3;
-    padding: 2.5px;
-    opacity: 0;
-    background: conic-gradient(
-      from calc(var(--angle, 0deg) - 32deg),
-      transparent 0,
-      color-mix(in srgb, var(--brand, #888) 75%, transparent) 20deg,
-      #fff 32deg,
-      color-mix(in srgb, var(--brand, #888) 75%, transparent) 44deg,
-      transparent 64deg
-    );
-    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-    -webkit-mask-composite: xor;
-    mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-    mask-composite: exclude;
-    transition: opacity 0.56s var(--rim-ease);
-  }
-  [data-theme='light'] .rim-card__arc {
-    background: conic-gradient(
-      from calc(var(--angle, 0deg) - 32deg),
-      transparent 0,
-      var(--brand, #888) 32deg,
-      transparent 64deg
-    );
-  }
-  /* İç parlama — imleç konumunda, metnin arkasında */
-  .rim-card__glare {
-    z-index: -1;
-    opacity: var(--glare-o);
     background: radial-gradient(
-      280px circle at var(--mx, 50%) var(--my, 0%),
-      color-mix(in srgb, var(--brand, #888) 16%, transparent),
+      220px circle at var(--mx, 50%) var(--my, 50%),
+      color-mix(in srgb, var(--brand, hsl(var(--foreground))) 85%, transparent),
+      transparent 70%
+    );
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    mask-composite: exclude;
+  }
+  /* iç ışık: metnin arkasında kalsın diye z-index -1 */
+  .glow-card::after {
+    z-index: -1;
+    background: radial-gradient(
+      260px circle at var(--mx, 50%) var(--my, 50%),
+      color-mix(in srgb, var(--brand, hsl(var(--foreground))) 13%, transparent),
       transparent 72%
     );
   }
-  [data-theme='dark'] .rim-card__glare {
-    mix-blend-mode: screen;
+  .glow-card:hover {
+    transform: translateY(-2px);
   }
-  /* Bir kez geçen çapraz parıltı */
-  .rim-card__sheen {
-    z-index: 1;
-    overflow: hidden;
-    opacity: 0;
-    background: linear-gradient(115deg, transparent 20%, #fff2 43%, transparent 62%) no-repeat;
-    background-size: 250% 100%;
-    background-position: 120% 0;
-    mix-blend-mode: soft-light;
+  .glow-card:active {
+    transform: translateY(0);
   }
-  .rim-card__mark {
-    position: absolute;
-    z-index: -1;
-    right: 0;
-    bottom: 0;
-    /* kartın dışına taşmasın: 375 px'te yatay kaydırma yapıyordu */
-    width: min(62%, 260px);
-    opacity: 0.09;
-    pointer-events: none;
-    -webkit-mask-image: radial-gradient(closest-side, #000 30%, transparent);
-    mask-image: radial-gradient(closest-side, #000 30%, transparent);
+  /* Üst kenarda 1 piksellik ışık — kartı zeminden ayırıyor.
+     inset box-shadow, çünkü ::before/::after parıltıya ayrılmış. */
+  [data-theme='dark'] .glow-card {
+    box-shadow: inset 0 1px 0 0 rgb(255 255 255 / 0.05);
   }
-  /* Hover/odak: kart kalkar, ark yanar, parıltı bir kez geçer */
-  .rim-card:hover,
-  a:focus-visible > .rim-card,
-  a:focus-visible.rim-card {
-    --glare-o: 1;
-    transform: translateY(-4px);
-  }
-  [data-theme='dark'] .rim-card:hover,
-  [data-theme='dark'] a:focus-visible > .rim-card {
-    box-shadow: inset 0 1px #fff4, inset 0 24px 26px -26px #fff5, inset 0 -70px 60px -60px #0006,
-      0 3px 4px #0008, 0 30px 34px #0008, 0 0 30px color-mix(in srgb, var(--brand, #888) 22%, transparent);
-  }
-  [data-theme='light'] .rim-card:hover {
-    box-shadow: inset 0 1px #fff, 0 2px 4px rgb(0 0 0 / 0.06), 0 24px 34px -18px rgb(0 0 0 / 0.28),
-      0 0 26px color-mix(in srgb, var(--brand, #888) 14%, transparent);
-  }
-  .rim-card:hover > .rim-card__arc {
-    opacity: 1;
-  }
-  .rim-card:hover > .rim-card__sheen {
-    animation: rim-sheen 0.95s var(--rim-ease) 1;
-  }
-  @keyframes rim-sheen {
-    0% {
-      opacity: 1;
-      background-position: 120% 0;
-    }
-    100% {
-      opacity: 1;
-      background-position: -60% 0;
-    }
-  }
-  .rim-card:active {
-    transform: translateY(-1px);
+  [data-theme='light'] .glow-card,
+  :root:not([data-theme]) .glow-card {
+    box-shadow: inset 0 1px 0 0 rgb(255 255 255 / 0.9), 0 1px 2px rgb(0 0 0 / 0.04);
   }
 
-  /* Dağıtılma girişi: kart masaya atılır gibi gelir, rim bir kez ateşlenir.
-     .anim'in yerine geçer (aynı --d gecikmesini okur). */
-  .deal {
-    animation: deal-in 1.05s cubic-bezier(0.2, 1.02, 0.3, 1) both;
-    animation-delay: var(--d, 0s);
-  }
-  .deal > .rim-card__rim {
-    animation: rim-ignite 2s ease-out both;
-    animation-delay: calc(var(--d, 0s) + 0.35s);
-  }
-  /* transform DEĞİL, ayrı translate/scale/rotate: fill-mode both
-     transform'u kilitleseydi hover'daki kalkma çalışmazdı. */
-  @keyframes deal-in {
-    from {
-      opacity: 0;
-      translate: 0 96px;
-      scale: 0.9;
-      rotate: -3.2deg;
-    }
-  }
-  @keyframes rim-ignite {
-    from {
-      filter: brightness(2.1) drop-shadow(0 0 18px var(--brand, #888));
-    }
-  }
-  /* Başlıklar: bulanıktan nete */
-  .title-in {
-    animation: title-in 0.9s var(--rim-ease, cubic-bezier(0.22, 1, 0.36, 1)) both;
-    animation-delay: var(--d, 0s);
-  }
-  @keyframes title-in {
-    from {
-      opacity: 0;
-      filter: blur(3px);
-      transform: translateY(70%);
-    }
-  }
-
-  /* Öne çıkan kartın hâlesi — kendi elementi. */
+  /* Öne çıkan kartın hâlesi.
+     KENDİ ELEMENTİ, .glow-card'ın ::before'u DEĞİL — ikisi aynı
+     sözde-elementi paylaşsaydı biri ötekini sessizce ezerdi. */
   .featured-halo {
     position: absolute;
     inset: -12px;
@@ -420,141 +297,6 @@
     50% {
       opacity: 1;
     }
-  }
-
-  /* Parlak hap buton: iç üst ışık, altta koyu, basınca iner */
-  .btn-pill {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.45rem;
-    height: 2.25rem;
-    padding: 0 0.95rem;
-    border-radius: 999px;
-    font-size: 0.875rem;
-    font-weight: 600;
-    letter-spacing: -0.01em;
-    color: hsl(var(--foreground));
-    background: linear-gradient(hsl(var(--foreground) / 0.1), hsl(var(--foreground) / 0.03));
-    box-shadow: inset 0 1px hsl(var(--foreground) / 0.22), inset 0 -1px #0004, 0 1px 2px #0003,
-      0 0 0 1px hsl(var(--hairline));
-    transition: transform 0.2s var(--rim-ease, ease), box-shadow 0.3s ease, background 0.3s ease;
-  }
-  .btn-pill:hover {
-    background: linear-gradient(hsl(var(--foreground) / 0.16), hsl(var(--foreground) / 0.05));
-    transform: translateY(-1px);
-  }
-  .btn-pill:active {
-    transform: translateY(1px);
-    box-shadow: inset 0 1px #0003, 0 0 0 1px hsl(var(--hairline));
-  }
-  .btn-pill--brand {
-    color: #fff;
-    background: linear-gradient(color-mix(in srgb, var(--brand) 82%, #fff), var(--brand));
-    box-shadow: inset 0 1px #fff6, inset 0 -2px #0003, 0 4px 14px -4px color-mix(in srgb, var(--brand) 60%, transparent);
-  }
-  .btn-pill--brand:hover {
-    background: linear-gradient(color-mix(in srgb, var(--brand) 70%, #fff), var(--brand));
-  }
-  .btn-pill--icon {
-    width: 2.25rem;
-    padding: 0;
-    justify-content: center;
-  }
-
-  /* Uzay zemini: iki katman yıldız (uzak/yakın, paralaks) + grain */
-  .space-layer {
-    position: fixed;
-    inset: -40vh 0;
-    z-index: -10;
-    pointer-events: none;
-    background-repeat: repeat;
-    will-change: transform;
-  }
-  .space-far {
-    background-size: 300px 300px;
-    opacity: 0.5;
-    transform: translate3d(0, calc(var(--scroll, 0) * -0.04px), 0);
-  }
-  .space-near {
-    background-size: 480px 480px;
-    opacity: 0.8;
-    transform: translate3d(0, calc(var(--scroll, 0) * -0.12px), 0);
-  }
-  .space-grain {
-    position: fixed;
-    inset: 0;
-    z-index: -9;
-    pointer-events: none;
-    opacity: 0.055;
-    background-size: 160px 160px;
-  }
-  [data-theme='light'] .space-far,
-  [data-theme='light'] .space-near {
-    display: none;
-  }
-  [data-theme='light'] .space-grain {
-    opacity: 0.035;
-  }
-
-  /* Navbar: üstte ince, kaydırınca camlaşan */
-  .nav-bar {
-    transition: background-color 0.4s ease, border-color 0.4s ease, backdrop-filter 0.4s ease;
-    border-bottom: 1px solid transparent;
-  }
-  .nav-bar[data-scrolled='true'] {
-    background: hsl(var(--background) / 0.62);
-    -webkit-backdrop-filter: saturate(1.6) blur(14px);
-    backdrop-filter: saturate(1.6) blur(14px);
-    border-color: hsl(var(--hairline));
-  }
-
-  /* Hero ışık halkası: yalnız CSS; canvas/WebGL ve sürekli JavaScript yok. */
-  .hero-orbit {
-    position: relative;
-    display: grid;
-    place-items: center;
-    pointer-events: none;
-  }
-  .hero-orbit::before,
-  .hero-orbit::after {
-    content: '';
-    position: absolute;
-    border-radius: 999px;
-  }
-  .hero-orbit::before {
-    inset: 7%;
-    background: conic-gradient(from 210deg, transparent 0 23%, color-mix(in srgb, var(--brand-accent) 72%, transparent) 36%, hsl(var(--foreground)) 45%, color-mix(in srgb, var(--brand-accent) 70%, transparent) 55%, transparent 68%);
-    -webkit-mask: radial-gradient(transparent 59%, #000 61% 63%, transparent 65%);
-    mask: radial-gradient(transparent 59%, #000 61% 63%, transparent 65%);
-    filter: drop-shadow(0 0 20px color-mix(in srgb, var(--brand-accent) 42%, transparent));
-    animation: hero-orbit 18s linear infinite;
-  }
-  .hero-orbit::after {
-    inset: 18%;
-    background: radial-gradient(circle, color-mix(in srgb, var(--brand-accent) 16%, transparent), transparent 66%);
-  }
-  .hero-orbit span {
-    position: relative;
-    color: hsl(var(--foreground));
-    font-size: clamp(4.5rem, 12vw, 9rem);
-    font-weight: 650;
-    line-height: 1;
-    letter-spacing: -0.1em;
-    text-shadow: 0 0 32px color-mix(in srgb, var(--brand-accent) 34%, transparent);
-  }
-  @keyframes hero-orbit {
-    to { transform: rotate(1turn); }
-  }
-
-  /* Discord durum noktası */
-  .presence-dot {
-    position: absolute;
-    right: -2px;
-    bottom: -2px;
-    width: 16px;
-    height: 16px;
-    border-radius: 999px;
-    border: 3px solid hsl(var(--card));
   }
 }
 
@@ -603,30 +345,15 @@
    nabzı, yoksa logo sönüp yanıyormuş gibi görünüyor. */
 @layer components {
   .pulse-glow {
-    /* Sabit: filter animasyonu her karede yeniden boyatıyordu (ana iş parçacığı). */
-    filter: drop-shadow(0 0 6px color-mix(in srgb, var(--brand) 60%, transparent));
+    animation: glow-pulse 7s ease-in-out infinite;
   }
-}
-
-/* Hareket azaltma: yeni sahne efektleri de kapalı (dosya sonunda ki
-   bileşen katmanını ezsin). */
-@media (prefers-reduced-motion: reduce) {
-  .deal,
-  .deal > .rim-card__rim,
-  .title-in,
-  .featured-halo,
-  .pulse-glow {
-    animation: none !important;
-  }
-  .rim-card:hover,
-  a:focus-visible > .rim-card {
-    transform: none;
-  }
-  .rim-card:hover > .rim-card__sheen {
-    animation: none;
-  }
-  .space-far,
-  .space-near {
-    transform: none;
+  @keyframes glow-pulse {
+    0%,
+    100% {
+      filter: drop-shadow(0 0 3px color-mix(in srgb, var(--brand) 40%, transparent));
+    }
+    50% {
+      filter: drop-shadow(0 0 9px color-mix(in srgb, var(--brand) 78%, transparent));
+    }
   }
 }

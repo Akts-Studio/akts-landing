@@ -181,8 +181,8 @@ export function AuroraGL({ amplitude = 1.0, blend = 0.5, speed = 0.4 }: Props) {
       renderer = new Renderer({
         alpha: true,
         premultipliedAlpha: true,
-        antialias: false,
-        dpr: 1,
+        antialias: true,
+        dpr: Math.min(window.devicePixelRatio || 1, 2),
       })
     } catch {
       setFailed(true)
@@ -240,12 +240,8 @@ export function AuroraGL({ amplitude = 1.0, blend = 0.5, speed = 0.4 }: Props) {
     resize()
 
     let raf = 0
-    let son = 0
     const update = (t: number) => {
       raf = requestAnimationFrame(update)
-      // Yumuşak degrade: 30 kare/sn yeter, GPU/CPU yarıya iner.
-      if (t - son < 30) return
-      son = t
       const p = propsRef.current
       program.uniforms.uTime.value = t * 0.001 * p.speed
       program.uniforms.uAmplitude.value = p.amplitude

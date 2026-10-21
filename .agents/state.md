@@ -1,14 +1,10 @@
 # Durum — akts-landing
 
-Güncelleme: 2026-10-21 | Son araç: codex
+Güncelleme: 2026-10-14 | Son araç: claude
 
 ## 2026-10-14 tema (CANLI)
 
 Vurgu turuncu-kırmızı: `--brand-accent` `#ff5b4a`/`#c8281c`, aurora `--aurora-1..3`. Uygulamalar `md:grid-cols-3`, telefonlar yelpaze (AppShowcase `index` prop). Aktaş Fit vitrini Inter'le HTML'den yeniden çizildi (`shots/aktasfit.jpg?v=2`) — gerçek cihaz görüntüsü gelirse değiştir. Profil `profile.jpg?v=2` (Snoopy). Derleme scratch'te `git archive HEAD` + `npm ci` ile yapıldı, `rsync -a dist/ akts:/var/www/akts.tr/`. `src/data/legal.ts` ve `.claude/launch.json` önceden kalma commit'lenmemiş değişiklik — dokunulmadı.
-
-## 2026-10-21 hafif hero (CANLI)
-
-`Hero3D.tsx`, `src/lib/akts-3d.js` ve köşe ay canvas'ları kaldırıldı. Yerine yalnız CSS ile dönen ince ışık halkası + A monogramı eklendi; 375/768/1440 örnek Discord verisiyle temiz, scratch `npm ci && npm run build` başarılı. `dist/` `/var/www/akts.tr/`'ye `--delete` olmadan rsync edildi; canlı HTTP 200 ve GPU ekran görüntüsü doğrulandı.
 
 ## Bilinen tuzak — Aviary (2026-10-14)
 
@@ -222,10 +218,3 @@ yeter, bölüm kendiliğinden görünür.
   (**`--delete` kullanma**: `ezan/`, `studytrack/` ve `maske/` dizinleri orada).
 - `.claude/launch.json`'daki `maske-site` girdisi maske-pack önizlemesi içindir;
   landing commit'ine girmesin.
-
-## 2026-10-21 · claude (Nemy turu, alt ajan)
-Yapıldı: aka Nemy; RimCard sahnesi (rim+ark+parlama+parıltı+filigran+dağıtılma), uzay zemini (yıldız paralaks+grain), Navbar (camlaşan, Discord), Hero3D küp + köşe ay kayaları (akts-3d.js bağlı, tembel parça), Discord canlı durum (src/lib/discord.ts, ?discord=ornek). Commit YOK.
-Sıradaki adım: Eymen gözden geçirsin → commit → `npm run build && rsync -a dist/ akts:/var/www/akts.tr/` (--delete yok). Bot API'si (akts.tr/api/discord) canlıya çıkınca kart kendiliğinden canlanır.
-Tuzaklar: headless Chromium'da WebGL yazılımla çalışınca harness visual.sh 768'de screenshot timeout veriyor — `--use-angle=metal --enable-gpu` ile çalışıyor. StrictMode dev'de efekt iki kez kurulunca destroy() loseContext yaptığı için 3D yuvası dev'de CSS yedeğine düşebilir (prod'da sorun yok). Filigran kartın dışına taşarsa 375'te yatay kaydırma yapıyor (right:0 tut).
-
-- [x] **2026-10-22 optimizasyon turu (CANLI, claude):** shots/profile/logo WebP (?v=3), AuroraGL dpr 1 + 30fps + AA kapalı, pulse-glow filter animasyonu sabitlendi, RimCard pointermove rAF'e bağlandı. nginx: /static/ 1y immutable. Mobil LCP 3244→1328ms, TBT 1082→110ms, transfer 439→182KB. Canlıda sitemizde index.html.yedek-20261022 var.

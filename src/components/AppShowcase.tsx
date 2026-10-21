@@ -1,7 +1,6 @@
 import type { CSSProperties } from 'react'
 import { ArrowUpRight } from 'lucide-react'
 import { Logo } from '@/components/Logos'
-import { RimCard } from '@/components/RimCard'
 import type { App } from '@/data/site'
 
 /* Üç telefon yan yana dümdüz durunca katalog gibi görünüyordu.
@@ -14,10 +13,9 @@ export function AppShowcase({ app, delay, index }: { app: App; delay: number; in
   return (
     <a
       href={app.href}
-      className="group block h-full rounded-[var(--radius)]"
+      className="anim group flex h-full flex-col overflow-hidden rounded-[var(--radius)] border bg-card shadow-[inset_0_1px_#ffffff0d] transition-[border-color,transform] duration-500 [transition-timing-function:cubic-bezier(.22,1,.36,1)] hover:-translate-y-1.5 hover:border-foreground/20"
       style={{ '--d': `${delay}s`, '--tilt': TILT[index % 3] } as CSSProperties}
     >
-      <RimCard accent={app.accent} deal className="flex h-full flex-col overflow-hidden">
       <div className="relative h-60 overflow-hidden" style={{ background: app.tint }}>
         {/* Panelin altına doğru erime: telefon kesik değil, içeri gömülü görünsün. */}
         <span
@@ -40,7 +38,7 @@ export function AppShowcase({ app, delay, index }: { app: App; delay: number; in
         </span>
       </div>
 
-      <div className="flex flex-1 flex-col border-t p-5" style={{ borderColor: 'hsl(var(--hairline))' }}>
+      <div className="flex flex-1 flex-col border-t p-5">
         <div className="flex items-center gap-3">
           <Logo name={app.icon} className="h-10 w-10 shrink-0" />
           <div className="min-w-0">
@@ -57,7 +55,6 @@ export function AppShowcase({ app, delay, index }: { app: App; delay: number; in
           ))}
         </div>
       </div>
-      </RimCard>
     </a>
   )
 }
