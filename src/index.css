@@ -603,16 +603,8 @@
    nabzı, yoksa logo sönüp yanıyormuş gibi görünüyor. */
 @layer components {
   .pulse-glow {
-    animation: glow-pulse 7s ease-in-out infinite;
-  }
-  @keyframes glow-pulse {
-    0%,
-    100% {
-      filter: drop-shadow(0 0 3px color-mix(in srgb, var(--brand) 40%, transparent));
-    }
-    50% {
-      filter: drop-shadow(0 0 9px color-mix(in srgb, var(--brand) 78%, transparent));
-    }
+    /* Sabit: filter animasyonu her karede yeniden boyatıyordu (ana iş parçacığı). */
+    filter: drop-shadow(0 0 6px color-mix(in srgb, var(--brand) 60%, transparent));
   }
 }
 

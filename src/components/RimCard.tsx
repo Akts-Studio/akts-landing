@@ -24,18 +24,25 @@ type Props = {
  */
 export function RimCard({ children, className, accent, style, watermark, deal }: Props) {
   const ref = useRef<HTMLDivElement>(null)
+  const raf = useRef(0)
 
   const onMove = useCallback((e: React.PointerEvent<HTMLDivElement>) => {
     if (e.pointerType !== 'mouse') return
     const el = ref.current
     if (!el) return
-    const r = el.getBoundingClientRect()
-    const x = e.clientX - r.left
-    const y = e.clientY - r.top
-    const angle = (Math.atan2(y - r.height / 2, x - r.width / 2) * 180) / Math.PI + 90
-    el.style.setProperty('--mx', `${x}px`)
-    el.style.setProperty('--my', `${y}px`)
-    el.style.setProperty('--angle', `${angle}deg`)
+    const cx = e.clientX
+    const cy = e.clientY
+    // Kare başına en fazla bir yazım: pointermove 120+ Hz gelebilir.
+    cancelAnimationFrame(raf.current)
+    raf.current = requestAnimationFrame(() => {
+      const r = el.getBoundingClientRect()
+      const x = cx - r.left
+      const y = cy - r.top
+      const angle = (Math.atan2(y - r.height / 2, x - r.width / 2) * 180) / Math.PI + 90
+      el.style.setProperty('--mx', `${x}px`)
+      el.style.setProperty('--my', `${y}px`)
+      el.style.setProperty('--angle', `${angle}deg`)
+    })
   }, [])
 
   return (

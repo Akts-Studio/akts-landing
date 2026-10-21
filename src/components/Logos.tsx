@@ -116,7 +116,7 @@ export function LogoDefs() {
           <rect x="2" y="2" width="44" height="44" rx="12" />
         </clipPath>
         <g id="i-study">
-          <image href="/assets/studytrack.png" x="2" y="2" width="44" height="44" clipPath="url(#c-study)" />
+          <image href="/assets/studytrack.webp?v=3" x="2" y="2" width="44" height="44" clipPath="url(#c-study)" />
         </g>
       </defs>
     </svg>
