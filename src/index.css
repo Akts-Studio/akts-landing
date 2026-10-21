@@ -508,72 +508,42 @@
     border-color: hsl(var(--hairline));
   }
 
-  /* 3D yuvaları: modül yüklenene kadar CSS yedeği görünür */
-  .akts3d-slot {
+  /* Hero ışık halkası: yalnız CSS; canvas/WebGL ve sürekli JavaScript yok. */
+  .hero-orbit {
     position: relative;
-    contain: strict;
-  }
-  .akts3d-slot > canvas {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    cursor: grab;
-    touch-action: pan-y;
-  }
-  .akts3d-slot > canvas:active {
-    cursor: grabbing;
-  }
-  .akts3d-slot[data-ready='true'] > .akts3d-fallback {
-    opacity: 0;
-  }
-  .akts3d-fallback {
-    position: absolute;
-    inset: 0;
     display: grid;
     place-items: center;
     pointer-events: none;
-    transition: opacity 0.6s ease;
   }
-  .cube-css {
-    width: 46%;
-    aspect-ratio: 1;
-    border-radius: 18%;
-    transform: rotate(12deg);
-    background: linear-gradient(140deg, #ffffff30, #ffffff08 45%, color-mix(in srgb, var(--brand-accent) 22%, transparent));
-    box-shadow: inset 0 1px #fff6, inset 0 -18px 30px -18px #0008, 0 30px 60px -20px #000a,
-      0 0 50px color-mix(in srgb, var(--brand-accent) 25%, transparent);
-    border: 1px solid #ffffff2a;
+  .hero-orbit::before,
+  .hero-orbit::after {
+    content: '';
+    position: absolute;
+    border-radius: 999px;
   }
-  .moon-corner {
-    position: fixed;
-    z-index: -8;
-    pointer-events: none;
-    width: clamp(160px, 28vw, 420px);
-    aspect-ratio: 1;
-    -webkit-mask-image: radial-gradient(closest-side, #000 45%, transparent);
-    mask-image: radial-gradient(closest-side, #000 45%, transparent);
-    opacity: 0.85;
+  .hero-orbit::before {
+    inset: 7%;
+    background: conic-gradient(from 210deg, transparent 0 23%, color-mix(in srgb, var(--brand-accent) 72%, transparent) 36%, hsl(var(--foreground)) 45%, color-mix(in srgb, var(--brand-accent) 70%, transparent) 55%, transparent 68%);
+    -webkit-mask: radial-gradient(transparent 59%, #000 61% 63%, transparent 65%);
+    mask: radial-gradient(transparent 59%, #000 61% 63%, transparent 65%);
+    filter: drop-shadow(0 0 20px color-mix(in srgb, var(--brand-accent) 42%, transparent));
+    animation: hero-orbit 18s linear infinite;
   }
-  .moon-corner--tl {
-    top: -8%;
-    left: -10%;
+  .hero-orbit::after {
+    inset: 18%;
+    background: radial-gradient(circle, color-mix(in srgb, var(--brand-accent) 16%, transparent), transparent 66%);
   }
-  .moon-corner--br {
-    bottom: -12%;
-    right: -12%;
+  .hero-orbit span {
+    position: relative;
+    color: hsl(var(--foreground));
+    font-size: clamp(4.5rem, 12vw, 9rem);
+    font-weight: 650;
+    line-height: 1;
+    letter-spacing: -0.1em;
+    text-shadow: 0 0 32px color-mix(in srgb, var(--brand-accent) 34%, transparent);
   }
-  .moon-corner .akts3d-fallback {
-    border-radius: 50%;
-    background: radial-gradient(circle at 35% 30%, #5a5652, #2a2826 55%, #121110);
-  }
-  [data-theme='light'] .moon-corner {
-    opacity: 0.35;
-  }
-  @media (max-width: 640px) {
-    [data-theme='dark'] .moon-corner {
-      opacity: 0.55;
-    }
+  @keyframes hero-orbit {
+    to { transform: rotate(1turn); }
   }
 
   /* Discord durum noktası */

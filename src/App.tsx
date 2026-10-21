@@ -7,7 +7,6 @@ import { Footer } from '@/components/Footer'
 import { LogoDefs } from '@/components/Logos'
 import { PersonSection } from '@/components/PersonSection'
 import { ServiceCard } from '@/components/ServiceCard'
-import { Hero3D } from '@/components/Hero3D'
 import { Navbar } from '@/components/Navbar'
 import { SpaceBackdrop } from '@/components/SpaceBackdrop'
 import { UpcomingCard } from '@/components/UpcomingCard'
@@ -65,7 +64,9 @@ export default function App() {
             servisleri. Hepsi tek çatı altında.
           </p>
           </div>
-          <Hero3D className="mx-auto aspect-square w-44 sm:w-56 md:w-full" />
+          <div className="hero-orbit mx-auto aspect-square w-44 sm:w-56 md:w-full" aria-hidden="true">
+            <span>A</span>
+          </div>
           </div>
 
           <section className="mt-14">

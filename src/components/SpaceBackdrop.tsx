@@ -1,5 +1,4 @@
 import { useEffect } from 'react'
-import { MoonCorners } from '@/components/Hero3D'
 
 /**
  * Uzay zemini: iki katman SVG yıldız dokusu (300px uzak / 480px yakın,
@@ -48,7 +47,6 @@ export function SpaceBackdrop() {
       <div aria-hidden="true" className="space-layer space-far" style={{ backgroundImage: FAR }} />
       <div aria-hidden="true" className="space-layer space-near" style={{ backgroundImage: NEAR }} />
       <div aria-hidden="true" className="space-grain" style={{ backgroundImage: GRAIN }} />
-      <MoonCorners />
     </>
   )
 }

@@ -45,7 +45,7 @@ export type DiscordVarlik = {
   sunucu?: { ad: string; davet: string | null; uyeSayisi: number; cevrimici: number } | null
 }
 
-export const DISCORD_ID = '839773566244880385'
+export const DISCORD_ID = '1507392064206278919'
 export const DISCORD_PROFIL = `https://discord.com/users/${DISCORD_ID}`
 export const DURUM_RENGI: Record<DiscordDurum, string> = {
   online: '#23a55a',

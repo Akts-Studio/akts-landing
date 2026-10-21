@@ -123,7 +123,7 @@ export const people: Person[] = [
     avatar: '/assets/profile.jpg?v=2',
     initials: 'EA',
     aka: 'Nemy',
-    discord: '839773566244880385',
+    discord: '1507392064206278919',
     links: [
       {
         name: 'Portfolyo',
