@@ -87,7 +87,7 @@ export const services: Link[] = [
   },
   {
     name: 'OyunHub',
-    desc: '600+ ücretsiz tarayıcı oyunu · 2 kişilik, ikonik ve arcade · indirme yok',
+    desc: '20 seçkin tarayıcı oyunu · en çok oynananlar · indirme ve üyelik yok',
     href: 'https://oyun.akts.tr',
     icon: 'oyun',
     accent: 'var(--c-oyun)',

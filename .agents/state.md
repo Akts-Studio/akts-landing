@@ -222,3 +222,9 @@ yeter, bölüm kendiliğinden görünür.
   (**`--delete` kullanma**: `ezan/`, `studytrack/` ve `maske/` dizinleri orada).
 - `.claude/launch.json`'daki `maske-site` girdisi maske-pack önizlemesi içindir;
   landing commit'ine girmesin.
+
+## 2026-10-22 navbar kasma + gösterge (claude, CANLI index-CzWaEcpr.js, 131bb3e)
+Kasma sebebi: scroll'da setState + max-width/padding/border-radius geçişi (layout) backdrop-filter'lı kapsülde. Şimdi state yok; passive scroll + rAF yalnız data-scrolled yazar, küçülme transform. BlankReel navbar'ındaki kayan damla (components/landing/navbar.tsx) uyarlandı: üst %33 çizgisi, IntersectionObserver, transform, hover takibi, reduced-motion. Ölçüm (scrollperf, 4sn kaydırma): script 70→28 ms, recalc 73→45 ms.
+
+## 2026-10-22 navbar yok olma + yükleme ekranı (claude, CANLI)
+Kök neden: navbar `position:sticky` + backdrop-filter; hızlı kaydırmada compositor kareleri çubuğu çiziyor/düşürüyordu (screencast ölçümü: 346 kareden 102'sinde çubuk yoktu). `position:fixed` (wrap yalnız yer tutucu) ile 0/336. "Uygulamalar" bağlantısı "Projelerim" oldu; hafif yükleme ekranı (≤1.5 sn, reduced-motion uyumlu); OyunHub metni 20 seçkin oyun. theme-color #bb2a2a bilerek (marka kırmızısı).

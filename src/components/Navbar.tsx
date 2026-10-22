@@ -4,7 +4,7 @@ import { ThemeToggle } from '@/components/ThemeToggle'
 const DISCORD = 'https://discord.com/users/1507392064206278919'
 
 const LINKS = [
-  { href: '#uygulamalar', label: 'Uygulamalar' },
+  { href: '#uygulamalar', label: 'Projelerim' },
   { href: '#servisler', label: 'Servisler' },
   { href: '#kisiler', label: 'Kişiler' },
 ]

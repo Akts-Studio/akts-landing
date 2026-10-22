@@ -507,11 +507,20 @@
 
 /* Navbar: BlankReel'in liquid glass kapsülü, akts.tr tema renkleriyle */
 @layer components {
+  /* Sabit konum: sticky + backdrop-filter kaydırırken kareleri düşürüp çubuğu yok ediyordu.
+     Wrap yalnız yer tutucu, nav kendi katmanında position:fixed. */
   .nav-wrap {
-    position: sticky;
-    top: 0;
+    position: relative;
     z-index: 40;
-    padding: 0.75rem 0.75rem 0;
+    height: 4.25rem;
+    pointer-events: none;
+  }
+  .nav-wrap > nav {
+    position: fixed;
+    top: 0.75rem;
+    left: 0.75rem;
+    right: 0.75rem;
+    pointer-events: auto;
   }
   .liquid-glass {
     position: relative;
