@@ -13,7 +13,7 @@ const TILT = ['-5deg', '0deg', '5deg']
 export function AppShowcase({ app, delay, index }: { app: App; delay: number; index: number }) {
   return (
     <RimCard
-      accent="var(--brand-accent)"
+      accent={app.accent}
       className="anim h-full"
       style={{ '--d': `${delay}s`, '--tilt': TILT[index % 3] } as CSSProperties}
     >

@@ -1,6 +1,7 @@
 import type { CSSProperties } from 'react'
 import { AuroraGL } from '@/components/AuroraGL'
 import { ClickSpark } from '@/components/ClickSpark'
+import { useReady } from '@/lib/useReady'
 import { CountUp } from '@/components/CountUp'
 import { AppShowcase } from '@/components/AppShowcase'
 import { Footer } from '@/components/Footer'
@@ -33,10 +34,11 @@ function SectionTitle({
 }
 
 export default function App() {
+  const ready = useReady()
   return (
     <>
-      <AuroraGL />
-      <ClickSpark />
+      {ready && <AuroraGL />}
+      {ready && <ClickSpark />}
       {/* İnce nokta dokusu — düz zemine derinlik veriyor, okunurluğa
           dokunmayacak kadar soluk (%. birkaç). */}
       <div
@@ -69,6 +71,7 @@ export default function App() {
             servisleri. Hepsi tek çatı altında.
           </p>
 
+          <div id="projelerim" className="scroll-mt-24">
           <section id="uygulamalar" className="mt-14 scroll-mt-24">
             <SectionTitle count={apps.length} delay={0.13}>
               Uygulamalar
@@ -90,6 +93,7 @@ export default function App() {
               ))}
             </div>
           </section>
+          </div>
 
           {upcoming.length > 0 && (
             <section className="mt-14">

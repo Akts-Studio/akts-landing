@@ -41,6 +41,8 @@ export type App = {
   /** vitrin panelinin zemini: uygulamanın kendi rengi */
   tint: string
   tags: string[]
+  /** kartın rim/ark rengi: uygulamanın kendi rengi (index.css --c-*) */
+  accent: string
 }
 
 export const apps: App[] = [
@@ -53,6 +55,7 @@ export const apps: App[] = [
     shot: '/shots/mehtapp.jpg?v=2',
     tint: 'radial-gradient(120% 90% at 50% 0%, #15523f, #0b3b2e 55%, #062419)',
     tags: ['Android', 'Galaxy Watch', 'Widget'],
+    accent: 'var(--c-ezan)',
   },
   {
     name: 'StudyTrack',
@@ -63,6 +66,7 @@ export const apps: App[] = [
     shot: '/shots/studytrack.jpg',
     tint: 'radial-gradient(120% 90% at 50% 0%, #e3efe7, #cde0d4 60%, #a9ccb7)',
     tags: ['Android', 'Wear OS', 'Web'],
+    accent: 'var(--c-study)',
   },
   {
     name: 'Aktaş Fit',
@@ -73,6 +77,7 @@ export const apps: App[] = [
     shot: '/shots/aktasfit.jpg?v=2',
     tint: 'radial-gradient(120% 90% at 50% 0%, #4a1414, #2a0b0b 55%, #120505)',
     tags: ['Android', 'Yapay zekâ', 'Widget'],
+    accent: 'var(--c-fit)',
   },
 ]
 
@@ -98,6 +103,14 @@ export const services: Link[] = [
     href: 'https://blankreel.com',
     icon: 'blankreel',
     accent: 'var(--c-blankreel)',
+  },
+  {
+    name: 'Tüm projeler',
+    desc: 'eymen.akts.tr · açık kaynak çalışmalar, modeller ve eklentiler dahil',
+    href: 'https://eymen.akts.tr/#dizin',
+    icon: 'kod',
+    accent: 'var(--c-portfolyo)',
+    span: true,
   },
   {
     name: 'n8n',

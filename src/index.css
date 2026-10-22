@@ -58,6 +58,7 @@
     --c-github: #24292f;
     --c-ezan: #0e7f5f;
     --c-study: #3a9a5e;
+    --c-fit: #bb2a2a;
     --c-blankreel: #18181b;
 
     --ring-a: rgba(0, 0, 0, 0.28);
@@ -108,6 +109,7 @@
     --c-github: #d8d8de;
     --c-ezan: #4fd1a5;
     --c-study: #5cc986;
+    --c-fit: #ff5b4a;
     --c-blankreel: #e4e4e7;
 
     --ring-a: rgba(255, 255, 255, 0.32);
@@ -179,7 +181,7 @@
 
   /* Giriş animasyonu: --d ile sıraya sokuluyor */
   .anim {
-    animation: rise 0.62s cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation: rise 0.4s cubic-bezier(0.22, 1, 0.36, 1) both;
     animation-delay: var(--d, 0s);
   }
   @keyframes rise {
@@ -248,7 +250,6 @@
     -webkit-mask-composite: xor;
     mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
     mask-composite: exclude;
-    filter: drop-shadow(0 0 5px color-mix(in srgb, var(--brand, #888) 32%, transparent));
   }
   [data-theme='light'] .rim-card__rim {
     background: radial-gradient(60% 80px at 50% 100%, color-mix(in srgb, var(--brand, #888) 80%, transparent), transparent),
@@ -356,11 +357,11 @@
   /* Dağıtılma girişi: kart masaya atılır gibi gelir, rim bir kez ateşlenir.
      .anim'in yerine geçer (aynı --d gecikmesini okur). */
   .deal {
-    animation: deal-in 1.05s cubic-bezier(0.2, 1.02, 0.3, 1) both;
+    animation: deal-in 0.55s cubic-bezier(0.2, 1.02, 0.3, 1) both;
     animation-delay: var(--d, 0s);
   }
   .deal > .rim-card__rim {
-    animation: rim-ignite 2s ease-out both;
+    animation: rim-ignite 0.9s ease-out both;
     animation-delay: calc(var(--d, 0s) + 0.35s);
   }
   /* transform DEĞİL, ayrı translate/scale/rotate: fill-mode both
@@ -373,9 +374,10 @@
       rotate: -3.2deg;
     }
   }
+  /* Yalnız opacity: filter animasyonu (brightness + drop-shadow) kaydırırken katmanı yeniden çiziyordu */
   @keyframes rim-ignite {
     from {
-      filter: brightness(2.1) drop-shadow(0 0 18px var(--brand, #888));
+      opacity: 0.2;
     }
   }
 

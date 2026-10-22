@@ -4,8 +4,7 @@ import { ThemeToggle } from '@/components/ThemeToggle'
 const DISCORD = 'https://discord.com/users/1507392064206278919'
 
 const LINKS = [
-  { href: '#uygulamalar', label: 'Projelerim' },
-  { href: '#servisler', label: 'Servisler' },
+  { href: '#projelerim', label: 'Projelerim' },
   { href: '#kisiler', label: 'Kişiler' },
 ]
 
@@ -46,13 +45,21 @@ export function Navbar() {
           scrolled = next
           header.toggleAttribute('data-scrolled', next)
         }
+        // Sayfa sonunda son bölüm üst %33 çizgisine ulaşamaz: en alttaysak son bağlantı aktif
+        const atBottom = window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 2
+        const want = atBottom ? links.length - 1 : ioActive
+        if (want !== active) {
+          active = want
+          if (!list.matches(':hover')) {
+            shown = -2
+            place(active)
+          }
+        }
       })
     }
-    onScroll()
-    window.addEventListener('scroll', onScroll, { passive: true })
-
     const links = Array.from(list.querySelectorAll<HTMLAnchorElement>('a'))
     let active = -1
+    let ioActive = -1
     let shown = -1
     const place = (i: number) => {
       if (i === shown) return
@@ -67,6 +74,7 @@ export function Navbar() {
       links.forEach((l, k) => l.toggleAttribute('data-on', k === i))
     }
     const rest = () => place(active)
+    window.addEventListener('scroll', onScroll, { passive: true })
 
     links.forEach((l, i) => {
       l.addEventListener('pointerenter', () => place(i))
@@ -81,11 +89,8 @@ export function Navbar() {
       (entries) => {
         entries.forEach((e) => seen.set(e.target.id, e.isIntersecting))
         const i = ids.findIndex((id) => seen.get(id))
-        active = i
-        if (!list.matches(':hover')) {
-          shown = -2
-          place(i)
-        }
+        ioActive = i
+        onScroll()
       },
       { rootMargin: '-33% 0px -66.5% 0px' },
     )

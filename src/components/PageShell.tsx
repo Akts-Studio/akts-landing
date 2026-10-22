@@ -8,13 +8,15 @@
  */
 import type { ReactNode } from 'react'
 import { AuroraGL } from '@/components/AuroraGL'
+import { useReady } from '@/lib/useReady'
 import { Footer } from '@/components/Footer'
 import { ThemeToggle } from '@/components/ThemeToggle'
 
 export function PageShell({ children }: { children: ReactNode }) {
+  const ready = useReady()
   return (
     <>
-      <AuroraGL />
+      {ready && <AuroraGL />}
       <div
         aria-hidden="true"
         className="pointer-events-none fixed inset-0 -z-10 opacity-[0.35] [background-size:22px_22px] [mask-image:radial-gradient(70%_60%_at_50%_0%,#000,transparent)]"

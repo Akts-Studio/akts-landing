@@ -228,3 +228,6 @@ Kasma sebebi: scroll'da setState + max-width/padding/border-radius geçişi (lay
 
 ## 2026-10-22 navbar yok olma + yükleme ekranı (claude, CANLI)
 Kök neden: navbar `position:sticky` + backdrop-filter; hızlı kaydırmada compositor kareleri çubuğu çiziyor/düşürüyordu (screencast ölçümü: 346 kareden 102'sinde çubuk yoktu). `position:fixed` (wrap yalnız yer tutucu) ile 0/336. "Uygulamalar" bağlantısı "Projelerim" oldu; hafif yükleme ekranı (≤1.5 sn, reduced-motion uyumlu); OyunHub metni 20 seçkin oyun. theme-color #bb2a2a bilerek (marka kırmızısı).
+
+## 2026-10-22 tur 3 (claude, CANLI)
+Rim kartlarda drop-shadow filter ve filter animasyonu kalktı (opacity), giriş animasyonları kısaldı; her uygulama kartı kendi renginde (--c-ezan/--c-study/--c-fit). Navbar: Projelerim (#projelerim = uygulamalar+servisler, "Tüm projeler" satırı eymen.akts.tr/#dizin'e) + Kişiler; sayfa sonunda son bağlantı aktif. Yükleme ekranı görselleri önden çözer; Aurora/ClickSpark kapanıştan sonra boşta (useReady). Landing'de kart kaybolması headless'ta üretilemedi (0/1015 boş örnek).
