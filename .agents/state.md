@@ -237,3 +237,7 @@ Kök neden: navbar `position:sticky` + backdrop-filter; hızlı kaydırmada comp
 
 ## 2026-10-22 tur 3 (claude, CANLI)
 Rim kartlarda drop-shadow filter ve filter animasyonu kalktı (opacity), giriş animasyonları kısaldı; her uygulama kartı kendi renginde (--c-ezan/--c-study/--c-fit). Navbar: Projelerim (#projelerim = uygulamalar+servisler, "Tüm projeler" satırı eymen.akts.tr/#dizin'e) + Kişiler; sayfa sonunda son bağlantı aktif. Yükleme ekranı görselleri önden çözer; Aurora/ClickSpark kapanıştan sonra boşta (useReady). Landing'de kart kaybolması headless'ta üretilemedi (0/1015 boş örnek).
+
+## 2026-11-16 (claude) otomatik yayın
+Canlı (commit'siz hâl, index-BNQ7ad3Y) 67dde2a ile main'e işlendi; derleme canlıyla birebir aynıydı. main'e push → GitHub Actions → /var/www/akts.tr (--delete yok, yedek + geri alma). Yerel dal artık main. Kasada wiki/entities/paketsoft-yayinlar.md.
+Tuzak: elle rsync yapma, artık yayın push'la. ~/Developer/akts-landing eski ikinci kopya. git push bu depoda bitince takılı kalabiliyor (uzakta tamam olur).
