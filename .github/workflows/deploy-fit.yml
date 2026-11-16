@@ -1,0 +1,43 @@
+# akts sunucusuna statik site yayını. HEDEF, BUILD ve CIKTI'yı projeye göre değiştir.
+# Kurulum: ~/harness/tools/yayin-anahtar.sh <sahip/depo> ve sunucudaki
+# paketsoft-yayinla STATIK tablosuna + paketsoft-deploy-giris HEDEFLER'e hedefi ekle.
+name: Deploy fit.akts.tr
+
+on:
+  push:
+    branches: [main]
+    paths: ["sunucu/fit/**", ".github/workflows/deploy-fit.yml"]
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-fit
+  cancel-in-progress: false
+
+env:
+  HEDEF: fit
+  CIKTI: sunucu/fit
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment: production
+    steps:
+      - uses: actions/checkout@v5
+      - run: echo "$(date -u +%Y.%m.%d)-${GITHUB_SHA::7}" > "$CIKTI/SURUM"
+
+      - name: Configure SSH
+        env:
+          DEPLOY_KEY: ${{ secrets.DEPLOY_SSH_KEY }}
+          KNOWN_HOSTS: ${{ secrets.DEPLOY_KNOWN_HOSTS }}
+        run: |
+          mkdir -p ~/.ssh
+          printf '%s\n' "$DEPLOY_KEY" > ~/.ssh/deploy && chmod 600 ~/.ssh/deploy
+          printf '%s\n' "$KNOWN_HOSTS" > ~/.ssh/known_hosts
+
+      - name: Upload build
+        run: |
+          rsync -az --delete  -e "ssh -i ~/.ssh/deploy" \
+            "$CIKTI/" deploy@${{ secrets.DEPLOY_HOST }}:/srv/paketsoft-deploy/$HEDEF/
+
+      - name: Activate release
+        run: ssh -i ~/.ssh/deploy deploy@${{ secrets.DEPLOY_HOST }} "$HEDEF"
