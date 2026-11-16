@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Yönetim — Avantaj Global Demo</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="../img/logo-sm.png">
+<link rel="stylesheet" href="../css/globals.css">
+<link rel="stylesheet" href="../css/admin.css">
+<style>
+  .demo-note { background: #da0210; color: #fff; text-align: center; font-size: 13px; font-weight: 700; padding: 8px 12px; } .demo-note a { text-decoration: underline; text-underline-offset: 3px; }
+  :root { --font: -apple-system, "SF Pro Text", system-ui, "Segoe UI", sans-serif; }
+  body { overflow-x: hidden; }
+  .st { display: inline-flex; align-items: center; height: 22px; padding: 0 9px; border-radius: 999px; font-size: 12px; font-weight: 600; background: #eef0f3; color: var(--ink-2); }
+  .st.ok { background: #e8f7ee; color: #0d6b36; } .st.warn { background: #fff4d6; color: #7a5200; } .st.bad { background: #fde8ea; color: #a1000d; } .st.info { background: #e6eefc; color: #1d4ed8; }
+  .add { display: grid; grid-template-columns: 2fr 1fr 1fr auto; gap: 10px; padding: 14px 16px; border-bottom: 1px solid #eef0f3; }
+  .add input { height: 36px; padding: 0 10px; border: 1px solid #dcdfe4; border-radius: 8px; min-width: 0; }
+  .banner { background: #fff6f6; border: 1px solid #f6c9cd; color: #8a000b; border-radius: 10px; padding: 10px 14px; font-size: 13px; }
+  #app[hidden], #login[hidden] { display: none; }
+  @media (max-width: 640px) { .add { grid-template-columns: 1fr 1fr; } .add input:first-child { grid-column: 1 / -1; } .kpis { grid-template-columns: repeat(2, 1fr); } .kpi:nth-child(3) { border-left: 0; } .kpi:nth-child(n+3) { border-top: 1px solid #eef0f3; } .adm-main { padding: 16px; } }
+</style>
+</head>
+<body>
+
+
+<div class="demo-note">DEMO — tüm veriler sahtedir, satın alma yoktur. <a href="../">Mağazaya dön →</a></div>
+<div class="adm" id="app">
+  <aside class="adm-side" id="side">
+    <div class="adm-brand"><img src="../img/logo.png" alt="Avantaj Global"><button class="adm-x" id="sideX" aria-label="Kapat">✕</button></div>
+    <div class="adm-group">
+      <span>Mağaza</span>
+      <a href="#urunler" class="on" data-tab="urunler">Ürünler</a>
+      <a href="#siparisler" data-tab="siparisler">Siparişler</a>
+      <a href="../">Mağazayı gör ↗</a>
+    </div>
+  </aside>
+  <div class="adm-scrim" id="scrim" hidden></div>
+  <div class="adm-body">
+    <header class="adm-top">
+      <button class="adm-burger" id="burger" aria-label="Menü">☰</button>
+      <div class="adm-user" style="margin-left:auto"><span>DM</span><div><b>Demo Yönetici</b><small>sahte hesap</small></div></div>
+    </header>
+    <main class="adm-main">
+      <div class="banner">Demo panel: giriş yok. Fiyat ve stok değişiklikleri yalnızca bu tarayıcıda saklanır ve vitrindeki ürün kartlarına yansır.</div>
+      <div class="kpis" id="kpis"></div>
+
+      <section id="urunler" class="card">
+        <div class="card-hd"><h3>Ürünler</h3><button class="btn ghost sm" id="reset">Demo verisini sıfırla</button></div>
+        <form class="add" id="addForm">
+          <input name="name" placeholder="Yeni ürün adı" required aria-label="Ürün adı">
+          <input name="price" type="number" step="0.01" min="0" placeholder="Fiyat ₺" required aria-label="Fiyat">
+          <input name="stock" type="number" min="0" placeholder="Stok" required aria-label="Stok">
+          <button class="btn sm" type="submit">Ekle</button>
+        </form>
+        <div class="tbl-wrap"><table class="tbl"><thead><tr><th>Ürün</th><th class="num">Fiyat (₺)</th><th class="num">Stok</th><th>Durum</th><th></th></tr></thead><tbody id="prod"></tbody></table></div>
+      </section>
+
+      <section id="siparisler" class="card">
+        <div class="card-hd"><h3>Siparişler</h3><small>Örnek siparişler (sahte)</small></div>
+        <div class="tbl-wrap"><table class="tbl"><thead><tr><th>No</th><th>Müşteri</th><th>Tarih</th><th class="num">Tutar</th><th>Durum</th></tr></thead><tbody id="ord"></tbody></table></div>
+      </section>
+    </main>
+  </div>
+</div>
+
+<script src="../data.js?v=20261027b"></script>
+<script>
+(function () {
+  var D, $ = function (i) { return document.getElementById(i); };
+  var STC = { "Hazırlanıyor": "warn", "Kargoda": "info", "Teslim edildi": "ok", "İptal": "bad" };
+  function draw() {
+    var stock = 0, ciro = 0;
+    D.products.forEach(function (p) { stock += p.stock; });
+    D.orders.forEach(function (o) { if (o.status !== "İptal") ciro += o.total; });
+    $("kpis").innerHTML = [["Ürün", D.products.length], ["Toplam stok", stock], ["Sipariş", D.orders.length], ["Ciro", AG.tl(ciro)]].map(function (k) {
+      return '<div class="kpi"><div class="kpi-hd">' + k[0] + "</div><b>" + k[1] + "</b></div>";
+    }).join("");
+    $("prod").innerHTML = D.products.map(function (p) {
+      var st = p.stock <= 0 ? ["Tükendi", "bad"] : p.stock < 10 ? ["Az kaldı", "warn"] : ["Satışta", "ok"];
+      return '<tr><td><div class="p-cell"><div class="p-thumb"><img src="' + AG.esc(p.img) + '" alt=""></div><div><b>' + AG.esc(p.name) + "</b><small>" + AG.esc(p.model) + "</small></div></div></td>" +
+        '<td class="num"><input class="cell-input" type="number" step="0.01" min="0" data-f="price" data-id="' + p.id + '" value="' + p.price + '" aria-label="Fiyat"></td>' +
+        '<td class="num"><input class="cell-input sm" type="number" min="0" data-f="stock" data-id="' + p.id + '" value="' + p.stock + '" aria-label="Stok"></td>' +
+        '<td><span class="st ' + st[1] + '">' + st[0] + '</span></td><td><div class="row-actions"><button data-del="' + p.id + '" aria-label="Sil" title="Sil">🗑</button></div></td></tr>';
+    }).join("");
+    $("ord").innerHTML = D.orders.map(function (o) {
+      return '<tr><td class="mono">' + AG.esc(o.no) + "</td><td>" + AG.esc(o.name) + '</td><td class="muted">' + AG.esc(o.date) + '</td><td class="num">' + AG.tl(o.total) + '</td><td><span class="st ' + (STC[o.status] || "") + '">' + AG.esc(o.status) + "</span></td></tr>";
+    }).join("");
+  }
+  document.addEventListener("change", function (e) {
+    var t = e.target; if (!t.dataset || !t.dataset.f) return;
+    var p = D.products.filter(function (x) { return x.id === +t.dataset.id; })[0], v = parseFloat(t.value);
+    if (!p || isNaN(v) || v < 0) { draw(); return; }
+    if (t.dataset.f === "stock") v = Math.floor(v);
+    if (t.dataset.f === "price" && p.oldPrice && v >= p.oldPrice) p.oldPrice = null;
+    p[t.dataset.f] = v; AG.save(); draw();
+  });
+  document.addEventListener("click", function (e) {
+    var d = e.target.closest("[data-del]"); if (!d) return;
+    D.products = D.products.filter(function (p) { return p.id !== +d.dataset.del; }); AG.save(); draw();
+  });
+  $("addForm").onsubmit = function (e) {
+    e.preventDefault(); var f = e.target, id = D.products.reduce(function (m, p) { return Math.max(m, p.id); }, 0) + 1;
+    D.products.push({ id: id, slug: "yeni-" + id, name: f.name.value.trim(), model: "YENİ-" + id, price: parseFloat(f.price.value), oldPrice: null, stock: parseInt(f.stock.value, 10), img: D.products[0] ? D.products[0].img : "" });
+    AG.save(); f.reset(); draw();
+  };
+  $("reset").onclick = function () { AG.reset(function (d) { D = d; draw(); }); };
+  function side(v) { $("side").classList.toggle("open", v); $("scrim").hidden = !v; }
+  $("burger").onclick = function () { side(true); }; $("sideX").onclick = $("scrim").onclick = function () { side(false); };
+  document.querySelectorAll("[data-tab]").forEach(function (a) { a.onclick = function () { side(false); document.querySelectorAll("[data-tab]").forEach(function (x) { x.classList.toggle("on", x === a); }); }; });
+  AG.ready(function (d) { D = d; draw(); });
+})();
+</script>
+</body>
+</html>

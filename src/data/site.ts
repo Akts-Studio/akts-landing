@@ -91,13 +91,6 @@ export const services: Link[] = [
     featured: true,
   },
   {
-    name: 'OyunHub',
-    desc: '20 seçkin tarayıcı oyunu · en çok oynananlar · indirme ve üyelik yok',
-    href: 'https://oyun.akts.tr',
-    icon: 'oyun',
-    accent: 'var(--c-oyun)',
-  },
-  {
     name: 'BlankReel',
     desc: 'Kodla kısa video üretimi · TikTok, Shorts ve Reels için API',
     href: 'https://blankreel.com',
@@ -105,20 +98,11 @@ export const services: Link[] = [
     accent: 'var(--c-blankreel)',
   },
   {
-    name: 'Tüm projeler',
-    desc: 'eymen.akts.tr · açık kaynak çalışmalar, modeller ve eklentiler dahil',
-    href: 'https://eymen.akts.tr/#dizin',
-    icon: 'kod',
-    accent: 'var(--c-portfolyo)',
-    span: true,
-  },
-  {
     name: 'n8n',
     desc: 'İş akışı otomasyonu · giriş gerekir',
     href: 'https://n8n.akts.tr',
     icon: 'n8n',
     accent: 'var(--c-n8n)',
-    span: true,
   },
 ]
 

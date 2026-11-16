@@ -2,6 +2,12 @@
 
 Güncelleme: 2026-10-22 | Son araç: claude
 
+## 2026-10-27 — akts.tr/demo (CANLI, claude)
+
+Gerçek mağazanın (avantajglobal/web, dev sunucu localhost:3210) çıktısından statik, JS'siz anlık görüntü: `public/demo/`. Üretici: `build_demo.py` (oturum scratchpad'inde; yeniden gerekirse: sayfaları 3210'dan çek, `<script>` sil, `/_next/image` → özgün dosya, Einhell→DemoPro, fiyat ×0.82, `/sepet /odeme /giris /hesap` vb. `data-blocked`, `.t-stagger`'a `is-shown` ekle, `s/demo.js` toast + galeri + fiyat/stok yansıtması). Admin `/demo/admin/` şifresiz, aynı `admin.css`, veri localStorage `ag-demo-v2` (+ `products.json`). Satın alma yok, üstte DEMO şeridi.
+
+Tuzaklar: Cloudflare statik dosyayı önbelleğe alıyor → `data.js?v=` ile ayır. Kaynak dosyalar 600 izinli, yüklemeden sonra sunucuda chmod 644/755. Görsellerdeki Einhell etiketleri fotoğrafın parçası (değişmedi). Zemus taslak ürünü bilerek dışarıda. Hamburger menü ve ürün sekmeleri JS'siz (sekme içerikleri alt alta açık). Yükleme: `rsync -a public/demo/ akts:/var/www/akts.tr/demo/` (--delete yok). Commit/push yok.
+
 ## 2026-10-22 (CANLI, index-DYagB64T.js)
 
 21 Ekim öncesine geri alınmıştı; yalnız kart efekti (RimCard, rAF'lı pointermove) ve BlankReel tarzı liquid glass Navbar (logo, bağlantılar, tema, Discord hapı) geri eklendi. Yıldız zemini, 3D ve Discord durumu YOK. legal.ts'e dokunulmadı. Derleme scratch kopyada, `rsync -a dist/` (--delete yok).

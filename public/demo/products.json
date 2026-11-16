@@ -1,0 +1,112 @@
+[
+ {
+  "id": 1,
+  "slug": "demopro-gc-dp-3325-kirli-su-dalgic-pompasi",
+  "name": "DemoPro GC-DP 3325 Kirli Su Dalgıç Pompası 330 W 9500 L/Saat",
+  "model": "GC-DP 3325",
+  "price": 2130.0,
+  "oldPrice": null,
+  "stock": 24,
+  "img": "../img/01-einhell-gc-dp-3325-urun-07cecd5-webp-6a33afcd.webp"
+ },
+ {
+  "id": 2,
+  "slug": "demopro-te-cs-18-165-1-li-solo-akulu-daire-testere",
+  "name": "DemoPro TE-CS 18/165-1 Li Solo Akülü Daire Testere 18 V 165 mm",
+  "model": "TE-CS 18/165-1 Li",
+  "price": 2930.0,
+  "oldPrice": 3440.0,
+  "stock": 41,
+  "img": "../img/te-cs-18-165.webp"
+ },
+ {
+  "id": 3,
+  "slug": "demopro-gc-sp-3580-ll-350w-temiz-su-dalgic-pompa-4006825615197",
+  "name": "DemoPro GC-SP 3580 LL 350W Temiz Su Dalgıç Pompa",
+  "model": "GC-SP 3580 LL",
+  "price": 2300.0,
+  "oldPrice": null,
+  "stock": 17,
+  "img": "../img/ilker-ed75b8f-webp-c457fdc1.webp"
+ },
+ {
+  "id": 4,
+  "slug": "demopro-ce-cp-18-180-li-e-solo-akulu-polisaj",
+  "name": "DemoPro CE-CP 18/180 Li E-Solo Kömürsüz Akülü Polisaj ve Zımpara Makinesi",
+  "model": "CE-CP 18/180 Li E",
+  "price": 3270.0,
+  "oldPrice": 6310.0,
+  "stock": 9,
+  "img": "../img/501-png-9543a1a8.webp"
+ },
+ {
+  "id": 5,
+  "slug": "demopro-te-cs-18-150-li-solo-akulu-daire-testere",
+  "name": "DemoPro TE-CS 18/150 Li Solo Akülü Daire Testere 150 mm",
+  "model": "TE-CS 18/150 Li",
+  "price": 2370.0,
+  "oldPrice": 2700.0,
+  "stock": 0,
+  "img": "../img/te-cs-18-165.webp"
+ },
+ {
+  "id": 6,
+  "slug": "demopro-ge-dp-7535-n-ll-750w-kirli-su-dalgic-pompa-4006825673364",
+  "name": "DemoPro GE-DP 7535 N LL 750W Kirli Su Dalgıç Pompası",
+  "model": "GE-DP 7535 N LL",
+  "price": 3770.0,
+  "oldPrice": null,
+  "stock": 12,
+  "img": "../img/1716-png-3434e2f7.webp"
+ },
+ {
+  "id": 7,
+  "slug": "demopro-gc-dp-5225-n-kirli-su-dalgic-pompasi",
+  "name": "DemoPro GC-DP 5225 N Kirli Su Dalgıç Pompası 520 W",
+  "model": "GC-DP 5225 N",
+  "price": 2700.0,
+  "oldPrice": 3110.0,
+  "stock": 30,
+  "img": "../img/gc-dp-3325-3.webp"
+ },
+ {
+  "id": 8,
+  "slug": "demopro-gc-dp-3325-kullanim-seti",
+  "name": "DemoPro GC-DP 3325 Pompa + 10 m Hortum Seti",
+  "model": "GC-DP 3325 SET",
+  "price": 2450.0,
+  "oldPrice": 2860.0,
+  "stock": 8,
+  "img": "../img/gc-dp-3325-2.webp"
+ },
+ {
+  "id": 9,
+  "slug": "demopro-ge-dp-6935-a-eco-kirli-su-pompasi",
+  "name": "DemoPro GE-DP 6935 A ECO Kirli Su Dalgıç Pompası 690 W",
+  "model": "GE-DP 6935 A ECO",
+  "price": 3400.0,
+  "oldPrice": null,
+  "stock": 15,
+  "img": "../img/ge-dp-7535-2.webp"
+ },
+ {
+  "id": 10,
+  "slug": "demopro-gc-sp-4080-ll-temiz-su-dalgic-pompa",
+  "name": "DemoPro GC-SP 4080 LL 400 W Temiz Su Dalgıç Pompa",
+  "model": "GC-SP 4080 LL",
+  "price": 2580.0,
+  "oldPrice": null,
+  "stock": 22,
+  "img": "../img/gc-sp-3580-2.webp"
+ },
+ {
+  "id": 11,
+  "slug": "demopro-gc-sp-3580-ll-seti",
+  "name": "DemoPro GC-SP 3580 LL Pompa + Adaptör Seti",
+  "model": "GC-SP 3580 LL SET",
+  "price": 2450.0,
+  "oldPrice": null,
+  "stock": 6,
+  "img": "../img/gc-sp-3580-3.webp"
+ }
+]

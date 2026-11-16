@@ -2,7 +2,7 @@
    GİZLİLİK METNİ — TEK KAYNAK.
 
    Bu metin akts.tr/gizlilik adresinde yayımlanıyor ve alan adı
-   altındaki DİĞER siteler (oyun.akts.tr, eymen.akts.tr) buraya
+   altındaki DİĞER siteler (eymen.akts.tr) buraya
    bağlanıyor. Metni üç yere kopyalamak yerine tek yerde tutmanın
    sebebi: kopyalar zamanla ayrışır ve birbiriyle çelişen iki
    gizlilik taahhüdü hukuken kötü bir yerdir.
@@ -45,8 +45,7 @@ export const privacySections: LegalSection[] = [
   {
     heading: 'Kısaca',
     callout:
-      'Bu sitelerde analitik yok, izleme çerezi yok, üyelik yok. Reklam yalnızca ' +
-        'OyunHub’ın oyun sayfalarında var (aşağıda ayrıca anlatılıyor). ' +
+      'Bu sitelerde analitik yok, izleme çerezi yok, üyelik yok, reklam yok. ' +
       'Sunucuya gönderilen kişisel veri toplanmıyor. Tarayıcında tutulan ' +
       'birkaç tercih var; onlar da senin cihazından hiç çıkmıyor.',
     body: [
@@ -59,7 +58,7 @@ export const privacySections: LegalSection[] = [
     body: [
       `Bu sitelerin veri sorumlusu ${legal.controller.name}. İletişim: ${legal.controller.email}.`,
       'Metin akts.tr alan adı ile alt alan adlarındaki halka açık siteleri ' +
-        'kapsar: akts.tr (karşılama sayfası), oyun.akts.tr (OyunHub) ve ' +
+        'kapsar: akts.tr (karşılama sayfası) ve ' +
         'eymen.akts.tr (kişisel portfolyo).',
     ],
   },
@@ -71,7 +70,7 @@ export const privacySections: LegalSection[] = [
     ],
     bullets: [
       'Google Analytics, Plausible, Matomo, Umami ya da başka bir analitik aracı',
-      'akts.tr ve eymen.akts.tr’de reklam ağı, piksel, yeniden hedefleme etiketi; OyunHub’da ana sayfa ve listeler de reklamsız',
+      'Hiçbir sitede reklam ağı, piksel ya da yeniden hedefleme etiketi yok',
       'İzleme (tracking) çerezi veya üçüncü taraf çerezi',
       'Üyelik, hesap açma, giriş yapma',
       'İletişim formu, bülten kaydı, e-posta toplama',
@@ -107,36 +106,6 @@ export const privacySections: LegalSection[] = [
     ],
   },
   {
-    heading: 'OyunHub oyun sayaçları ve beğeniler',
-    body: [
-      'OyunHub oyun başına anonim sayılar tutar: kaç kez açıldığı, toplam ' +
-        'kaç saniye oynandığı, kaç kişinin beğendiği ve beğenmediği. Bunun ' +
-        'için sunucuya yalnızca oyunun adı, saniye sayısı ve beğen/beğenme ' +
-        'seçimin gider; kim olduğun kaydedilmez, oyun senin adınla ' +
-        'eşleştirilmez. Sayacın yenilemeyle şişirilmesini önlemek için IP ' +
-        'adresin oynama sayacında 30 saniye, beğeni oyunda 10 saniye ' +
-        'bellekte tutulur ve diske yazılmaz. Reklam engelleyici kapısında ' +
-        'kodun tahminle bulunmasını önlemek için yanlış denemeler IP ' +
-        'adresiyle en çok bir saat bellekte sayılır, sonra silinir. Hangi ' +
-        'oyunları beğendiğin yalnızca kendi tarayıcında saklanır. Bu ' +
-        'sayılardan ayrıca gün başına toplamlar (o gün kaç oyun açıldı, ' +
-        'kaç dakika oynandı) tutulur; bunlarda da kişiye ait bilgi yoktur.',
-    ],
-  },
-  {
-    heading: 'OyunHub reklamları',
-    body: [
-      'OyunHub’ın oyun sayfalarında HilltopAds reklamları gösterilir: ' +
-        'sayfa üstünde banner, oyun başında ve oyun aralarında atlanabilir ' +
-        'video. Ana sayfada ve listelerde reklam yoktur. Reklamlar ' +
-        'HilltopAds sunucularından yüklenir; bu sunucular reklamı ' +
-        'göstermek için IP adresini, tarayıcı bilgisini ve kendi ' +
-        'çerezlerini kullanabilir. Bu veriler OyunHub’a gelmez ve ' +
-        'tarafımızdan saklanmaz; ayrıntılar için HilltopAds’in gizlilik ' +
-        'politikası geçerlidir.',
-    ],
-  },
-  {
     heading: 'Üçüncü taraflar',
     body: [
       'Sayfalar mümkün olduğunca kendi sunucumuzdan servis edilir. ' +
@@ -145,7 +114,6 @@ export const privacySections: LegalSection[] = [
     ],
     bullets: [
       'Cloudflare — akts.tr ve alt alan adlarının DNS’i ve trafiği Cloudflare üzerinden geçer (proxy açık). Yani siteye gelen her istek önce Cloudflare’ın sunucularına, sonra bize ulaşır. Cloudflare bu sırada IP adresini ve istek bilgisini işler ve bunu yurt dışındaki sunucularında yapabilir. Amaç güvenlik ve hız; Cloudflare’ın kendi gizlilik politikası geçerlidir.',
-      'HilltopAds — yalnızca OyunHub oyun sayfalarındaki banner ve video reklamlar için',
       'Bir dış bağlantıya tıkladığında (GitHub, Discord vb.) artık o sitenin politikası geçerlidir',
     ],
   },
@@ -225,20 +193,6 @@ export const siteNotes: SiteNote[] = [
     site: 'akts.tr — karşılama sayfası',
     host: 'akts.tr',
     items: [{ key: 'akts-theme', what: 'Açık/koyu tema tercihi' }],
-  },
-  {
-    site: 'OyunHub',
-    host: 'oyun.akts.tr',
-    items: [
-      { key: 'oyunhub:theme', what: 'Açık/koyu tema tercihi' },
-      { key: 'oyunhub:favorites', what: 'Favorilere eklediğin oyunların listesi' },
-      { key: 'oyunhub:recents', what: 'Son oynadığın oyunlar' },
-      { key: 'oyunhub:stats', what: 'Oyun başına oynama sayısı ve süresi' },
-      { key: 'oyunhub:votes', what: 'Beğendiğin ya da beğenmediğin oyunlar' },
-      { key: 'oyunhub:scores', what: 'Oyun başına en iyi skorun' },
-      { key: 'oyunhub:sound', what: 'Ses açık/kapalı tercihi' },
-      { key: 'oyunhub:reduceMotion', what: 'Animasyonları azalt tercihi' },
-    ],
   },
   {
     site: 'Kişisel portfolyo',

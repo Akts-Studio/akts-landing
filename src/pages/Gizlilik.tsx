@@ -1,6 +1,6 @@
 /**
  * Gizlilik sayfası. akts.tr alan adının KANONİK gizlilik metni —
- * oyun.akts.tr ve eymen.akts.tr buraya bağlanıyor.
+ * eymen.akts.tr buraya bağlanıyor.
  *
  * İçeriğin tamamı src/data/legal.ts'ten geliyor; burada yalnızca
  * biçim var. Metni değiştirmek için bu dosyaya değil legal.ts'e bak.
